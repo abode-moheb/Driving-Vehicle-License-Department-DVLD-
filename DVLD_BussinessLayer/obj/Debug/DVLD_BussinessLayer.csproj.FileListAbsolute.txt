@@ -1,9 +1,0 @@
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\bin\Debug\DVLD_BussinessLayer.dll
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\bin\Debug\DVLD_BussinessLayer.pdb
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\obj\Debug\DVLD_BussinessLayer.csprojAssemblyReference.cache
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\obj\Debug\DVLD_BussinessLayer.csproj.CoreCompileInputs.cache
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\obj\Debug\DVLD_BussinessLayer.dll
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\obj\Debug\DVLD_BussinessLayer.pdb
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\bin\Debug\DVLD_DataAccessLayer.dll
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\bin\Debug\DVLD_DataAccessLayer.pdb
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_BussinessLayer\obj\Debug\DVLD_BussinessLayer.csproj.CopyComplete

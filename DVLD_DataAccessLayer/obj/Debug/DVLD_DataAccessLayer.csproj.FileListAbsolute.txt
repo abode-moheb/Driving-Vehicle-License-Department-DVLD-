@@ -1,6 +1,0 @@
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_DataAccessLayer\bin\Debug\DVLD_DataAccessLayer.dll
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_DataAccessLayer\bin\Debug\DVLD_DataAccessLayer.pdb
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_DataAccessLayer\obj\Debug\DVLD_DataAccessLayer.csproj.CoreCompileInputs.cache
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_DataAccessLayer\obj\Debug\DVLD_DataAccessLayer.dll
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_DataAccessLayer\obj\Debug\DVLD_DataAccessLayer.pdb
-D:\Abu Hadhoud Courses\Driving Vehicle License Department (DVLD)\DVLD_DataAccessLayer\obj\Debug\DVLD_DataAccessLayer.csprojAssemblyReference.cache
