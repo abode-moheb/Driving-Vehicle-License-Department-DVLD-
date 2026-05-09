@@ -22,5 +22,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form PeopleForm = new ManagePeopleForm();
             PeopleForm.Show();
         }
+
+        private void UsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form UsersForm = new ManageUsersForm();
+            UsersForm.Show();
+        }
     }
 }

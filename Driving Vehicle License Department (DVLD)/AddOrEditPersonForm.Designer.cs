@@ -36,10 +36,22 @@
             // 
             // ctrlPerson1
             // 
+            this.ctrlPerson1.Address = "";
+            this.ctrlPerson1.DateOfBirth = new System.DateTime(2008, 5, 9, 0, 0, 0, 0);
+            this.ctrlPerson1.Email = "";
+            this.ctrlPerson1.FirstName = "";
+            this.ctrlPerson1.Gendor = 0;
+            this.ctrlPerson1.ImageSavedPath = null;
+            this.ctrlPerson1.LastName = "";
             this.ctrlPerson1.Location = new System.Drawing.Point(-12, 100);
             this.ctrlPerson1.Name = "ctrlPerson1";
+            this.ctrlPerson1.NationalityCountryID = 169;
+            this.ctrlPerson1.NationalNum = "";
+            this.ctrlPerson1.Phone = "";
+            this.ctrlPerson1.SecondeName = "";
             this.ctrlPerson1.Size = new System.Drawing.Size(828, 362);
             this.ctrlPerson1.TabIndex = 0;
+            this.ctrlPerson1.ThirdName = "";
             // 
             // lblHeader
             // 

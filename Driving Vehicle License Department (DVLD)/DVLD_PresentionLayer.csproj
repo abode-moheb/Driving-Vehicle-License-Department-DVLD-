@@ -52,6 +52,18 @@
     <Compile Include="AddOrEditPersonForm.Designer.cs">
       <DependentUpon>AddOrEditPersonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddOrEditUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOrEditUserForm.Designer.cs">
+      <DependentUpon>AddOrEditUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlFindWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlFindWithFilter.Designer.cs">
+      <DependentUpon>ctrlFindWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlShowPersonDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,6 +88,12 @@
     <Compile Include="ctrlPerson.Designer.cs">
       <DependentUpon>ctrlPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUsersForm.Designer.cs">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowPersonDetailsForm.cs">
@@ -86,6 +104,12 @@
     </Compile>
     <EmbeddedResource Include="AddOrEditPersonForm.resx">
       <DependentUpon>AddOrEditPersonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOrEditUserForm.resx">
+      <DependentUpon>AddOrEditUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlFindWithFilter.resx">
+      <DependentUpon>ctrlFindWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlShowPersonDetails.resx">
       <DependentUpon>ctrlShowPersonDetails.cs</DependentUpon>
@@ -98,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlPerson.resx">
       <DependentUpon>ctrlPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUsersForm.resx">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -136,6 +163,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Women Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-gear-header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3da2ef9c41bc9f6dd59b472bc1b1bd08.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9fecc9c7d7735f44dac6e1e84409e766.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8e08e971e9c39845cad68fb0212c049d.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

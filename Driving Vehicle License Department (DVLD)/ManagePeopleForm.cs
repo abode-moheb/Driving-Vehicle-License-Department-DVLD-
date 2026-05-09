@@ -16,14 +16,30 @@ namespace Driving_Vehicle_License_Department__DVLD_
         DataTable PeopleTable;
         DataView DefaultView;
 
+        Dictionary<int, string> ColumnsMap = new Dictionary<int, string>
+        {
+            {1,"[Person ID]"},
+            {2,"[National No]"},
+            {3,"[First name]"},
+
+            {4,"[Seconde name]"},
+            {5,"[Third name]"},
+            {6,"[Last name]"},
+
+            {7,"[Nationality]"},
+            {8,"[Gendor]"},
+            {9,"[Phone]"},
+
+            {10,"[Email]"},
+        };
+
         public ManagePeopleForm()
         {
             InitializeComponent();
         }
 
         private void ManagePeopleForm_Load(object sender, EventArgs e)
-        {
-            comboBox1.SelectedValue = 0;
+        {          
             txtFilterby.Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;          
             LoadPeople();
@@ -41,23 +57,26 @@ namespace Driving_Vehicle_License_Department__DVLD_
             lblRecordeNumber.Text = dataGridView1.Rows.Count.ToString();
         }
 
-        void LoadPeopleWithFilter(string column, string value)
+        void ApplyFillter()
         {
-            if (string.IsNullOrWhiteSpace(value))
+
+            if (comboBox1.SelectedIndex <= 0)
             {
                 DefaultView.RowFilter = "";
                 lblRecordeNumber.Text = dataGridView1.Rows.Count.ToString();
                 return;
             }
 
+            string Column = ColumnsMap[comboBox1.SelectedIndex]; // column name
+
             // لو العمود رقمي
-            if (column == "[Person ID]")
+            if (Column == "[Person ID]")
             {
-                DefaultView.RowFilter = $"Convert({column}, 'System.String') LIKE '%{value}%'";
+                DefaultView.RowFilter = $"Convert({Column}, 'System.String') LIKE '%{txtFilterby.Text}%'";
             }
             else
             {
-                DefaultView.RowFilter = $"{column} LIKE '%{value}%'";
+                DefaultView.RowFilter = $"{Column} LIKE '%{txtFilterby.Text}%'";
             }
 
             lblRecordeNumber.Text = dataGridView1.Rows.Count.ToString();
@@ -65,58 +84,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         private void TxtFilterby_TextChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null)
-                return;
-
-            int selected = comboBox1.SelectedIndex;
-
-            switch (selected)
-            {
-                case 0: // none
-                    LoadPeopleWithFilter("", txtFilterby.Text);
-                    break;
-
-                case 1: // Person id
-                    LoadPeopleWithFilter("[Person ID]", txtFilterby.Text);
-                    break;
-
-                case 2: // National num
-                    LoadPeopleWithFilter("[National No]", txtFilterby.Text);
-                    break;
-
-                case 3: // First name
-                    LoadPeopleWithFilter("[First name]", txtFilterby.Text);
-                    break;
-
-                case 4: // Seconde name
-                    LoadPeopleWithFilter("[Seconde name]", txtFilterby.Text);
-                    break;
-
-                case 5: // Third name
-                    LoadPeopleWithFilter("[Third name]", txtFilterby.Text);
-                    break;
-
-                case 6: // Last name
-                    LoadPeopleWithFilter("[Last name]", txtFilterby.Text);
-                    break;
-
-                case 7: // Nationality
-                    LoadPeopleWithFilter("[Nationality]", txtFilterby.Text);
-                    break;
-
-                case 8: // Gendor
-                    LoadPeopleWithFilter("[Gendor]", txtFilterby.Text);
-                    break;
-
-                case 9: // Phone
-                    LoadPeopleWithFilter("[Phone]", txtFilterby.Text);
-                    break;
-
-                case 10: // Email
-                    LoadPeopleWithFilter("[Email]", txtFilterby.Text);
-                    break;
-            }
-           
+            ApplyFillter();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,7 +185,6 @@ namespace Driving_Vehicle_License_Department__DVLD_
         {
             MessageBox.Show("This Feature not added yet", "Message");
         }
-
-       
+     
     }
 }
