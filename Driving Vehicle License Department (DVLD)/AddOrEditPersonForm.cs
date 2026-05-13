@@ -27,6 +27,13 @@ namespace Driving_Vehicle_License_Department__DVLD_
             FindAndShowPersonData(PersonID);           
         }
 
+        // delegate returnType DelegateName(parameters);
+        public delegate void DataSendBack(int PersonID);
+
+        // declare an Event using delegate
+        static public event DataSendBack DataBack;
+
+
         private void AddOrEditPersonForm_Load(object sender, EventArgs e)
         {
             ctrlPerson1.OnSavedClicked += Save;
@@ -63,6 +70,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
                     MessageBox.Show("Recorde Save Successfully","Done",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                     lblPersonID.Text = PersonData.PersonID.ToString();
 
+                    DataBack?.Invoke(PersonData.PersonID);
                     this.DialogResult = DialogResult.OK;
                 }
                 else

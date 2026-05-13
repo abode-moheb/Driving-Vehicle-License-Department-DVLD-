@@ -37,6 +37,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             LoadUsers();
             comboBox1.SelectedIndex = 0;
+            AddOrEditUserForm.OnSavedClicked += LoadUsers;
         }
 
         void LoadUsers()
@@ -146,6 +147,53 @@ namespace Driving_Vehicle_License_Department__DVLD_
         {
             Form AddOrEditUser = new AddOrEditUserForm();
             AddOrEditUser.ShowDialog();
+        }
+
+        private void ShowDetailstoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonId = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                PersonId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+
+            Form AddOrEditUser = new AddOrEditUserForm(PersonId);
+            AddOrEditUser.Show();
+            LoadUsers();
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonId = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                PersonId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+
+            Form ChangePassword = new ChangeUserPasswordForm(PersonId);
+            ChangePassword.Show();
+            LoadUsers();            
+        }
+
+        private void SendEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PhoneCallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

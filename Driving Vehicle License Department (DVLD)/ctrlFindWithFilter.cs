@@ -20,6 +20,20 @@ namespace Driving_Vehicle_License_Department__DVLD_
         public event Action<string> FindUseNationalNo;
         public event Action<int> FindUsePersonID;
 
+        public string txtFillter
+        {
+            set { txtFillterBox.Text = value; }
+            get { return txtFillterBox.Text; }
+        }
+
+
+        public int ComboBox
+        {
+            set { comboBox1.SelectedIndex = value; }
+            get { return (int)comboBox1.SelectedIndex; }
+
+        }
+
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             int index = comboBox1.SelectedIndex;
@@ -50,13 +64,23 @@ namespace Driving_Vehicle_License_Department__DVLD_
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtFillterBox.Text = "";
+        {           
         }
 
         private void CtrlFindWithFilter_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            Form AddNewPeople = new AddOrEditPersonForm();
+            AddNewPeople.ShowDialog();
+        }
+
+        private void TxtFillterBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

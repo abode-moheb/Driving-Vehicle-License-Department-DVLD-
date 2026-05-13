@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_BussinessLayer;
 
 namespace Driving_Vehicle_License_Department__DVLD_
 {
@@ -18,29 +19,38 @@ namespace Driving_Vehicle_License_Department__DVLD_
         public event Action CloseForm;
         static public event Action LoadPeople;
 
+        private int _PersonID = -1;
         public int PersonID
         {
-            set { lblPersonID.Text = value.ToString(); }
-            get { return Convert.ToInt32(lblPersonID.Text); }
+            get
+            {
+                return _PersonID;
+            }
+
+            set
+            {
+                _PersonID = value;
+                lblPersonID.Text = value.ToString();
+            }
         }
 
         public string NationalNum
-        {           
+        {
             set { lblNationalNo.Text = value; }
         }
-       
+
         public string Name
-        {           
+        {
             set { lblName.Text = value; }
         }
 
         public string DateOfBirth
-        {            
+        {
             set { lblDateOfBirth.Text = value; }
         }
 
         public int Gendor
-        {      
+        {
             set
             {
                 if (value == 0)
@@ -51,17 +61,17 @@ namespace Driving_Vehicle_License_Department__DVLD_
         }
 
         public string Address
-        {            
+        {
             set { lblAddress.Text = value; }
         }
 
         public string Phone
-        {           
+        {
             set { lblPhone.Text = value; }
         }
 
         public string Email
-        {            
+        {
             set { lblEmail.Text = value; }
         }
 
@@ -80,34 +90,70 @@ namespace Driving_Vehicle_License_Department__DVLD_
             InitializeComponent();
         }
 
+        void ClearImage()
+        {
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Dispose();
+                pictureBox1.Image = null;
+            }
+        }
+
         void LoadPersonImage()
         {
-            if (_ImagePath != "")
+            if (!string.IsNullOrWhiteSpace(_ImagePath))
+            {
                 try
                 {
                     pictureBox1.Load(_ImagePath);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("الصورة غير متوفرة على الجهاز");
+                    MessageBox.Show("الصورة غير متوفرة على هذا الجهاز");
+                    ClearImage();
                 }
+            }
+            else
+            {
+                ClearImage();
+            }
         }
 
         private void CtrlShowPersonDetails_Load(object sender, EventArgs e)
-        {
-            lblName.ForeColor = Color.Red;
-            LoadPersonImage();
+        {           
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form AddOrEditForm = new AddOrEditPersonForm(PersonID);
-            CloseForm?.Invoke();
-           
-            if (AddOrEditForm.ShowDialog() == DialogResult.OK)
+            if (PersonID > -1)
             {
-                LoadPeople?.Invoke();
+                Form AddOrEditForm = new AddOrEditPersonForm(PersonID);
+                CloseForm?.Invoke();
+
+                if (AddOrEditForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadPeople?.Invoke();
+                }
             }
         }
+
+        public void ShowPersonData(clsManagePeople PersonData)
+        {
+            this.PersonID = PersonData.PersonID;
+
+            this.NationalNum = PersonData.NationalNum;
+            this.Name = PersonData.FirstName + " " + PersonData.SecondName + " " + PersonData.ThirdName + " " + PersonData.LastName;
+            this.DateOfBirth = PersonData.DateOfBirth.ToShortDateString();
+
+            this.Email = PersonData.Email;
+            this.Phone = PersonData.Phone;
+            this.Gendor = PersonData.Gendor;
+
+            this.Address = PersonData.Address;
+            this.ImageSavedPath = PersonData.ImagePath;
+            this.NationalityCountry = clsManagePeople.GetCountryNameByCountryID(PersonData.NationalityCountryID);
+            LoadPersonImage();
+        }
+       
     }
 }

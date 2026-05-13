@@ -103,6 +103,29 @@ namespace DVLD_BussinessLayer
                 return null;
         }
 
+        static public clsManagePeople FindPerson(string NationalNo)
+        {
+            int PersonID = -1;
+            string FirstName = "";
+            string SecondName = "";
+            string ThirdName = "";
+            string LastName = "";
+            DateTime DateOfBirth = DateTime.Today;
+            int Gendor = -1;
+            int NationalityCountryID = -1;
+            string Email = "";
+            string Phone = "";
+            string Address = "";
+            string ImagePath = "";
+
+            if (clsManagePeopleData.FindPersonUsingNationalNo(ref PersonID, NationalNo, ref FirstName, ref SecondName, ref ThirdName, ref LastName, ref DateOfBirth, ref Gendor, ref NationalityCountryID, ref Email, ref Phone, ref Address, ref ImagePath))
+                return new clsManagePeople(PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName, DateOfBirth, Gendor, Email, Phone
+            , Address, NationalityCountryID, ImagePath);
+
+            else
+                return null;
+        }
+
         bool _SavePersonDataAndGetID()
         {
             this.PersonID = clsManagePeopleData.SavePersonDataAndGetID(FirstName, SecondName, ThirdName, LastName, NationalNum, DateOfBirth, Gendor,

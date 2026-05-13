@@ -40,7 +40,6 @@
             this.lblGendor = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,17 +117,20 @@
             this.lblNationalNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNationalNo.Location = new System.Drawing.Point(150, 111);
             this.lblNationalNo.Name = "lblNationalNo";
-            this.lblNationalNo.Size = new System.Drawing.Size(0, 20);
+            this.lblNationalNo.Size = new System.Drawing.Size(53, 20);
             this.lblNationalNo.TabIndex = 6;
+            this.lblNationalNo.Text = "[????]";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.Red;
             this.lblName.Location = new System.Drawing.Point(150, 69);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 20);
+            this.lblName.Size = new System.Drawing.Size(53, 20);
             this.lblName.TabIndex = 7;
+            this.lblName.Text = "[????]";
             // 
             // lblPersonID
             // 
@@ -135,8 +138,9 @@
             this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPersonID.Location = new System.Drawing.Point(150, 26);
             this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(0, 20);
+            this.lblPersonID.Size = new System.Drawing.Size(53, 20);
             this.lblPersonID.TabIndex = 8;
+            this.lblPersonID.Text = "[????]";
             // 
             // lblGendor
             // 
@@ -144,8 +148,9 @@
             this.lblGendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGendor.Location = new System.Drawing.Point(150, 152);
             this.lblGendor.Name = "lblGendor";
-            this.lblGendor.Size = new System.Drawing.Size(0, 20);
+            this.lblGendor.Size = new System.Drawing.Size(53, 20);
             this.lblGendor.TabIndex = 9;
+            this.lblGendor.Text = "[????]";
             // 
             // lblEmail
             // 
@@ -153,8 +158,9 @@
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Location = new System.Drawing.Point(150, 191);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(0, 20);
+            this.lblEmail.Size = new System.Drawing.Size(53, 20);
             this.lblEmail.TabIndex = 10;
+            this.lblEmail.Text = "[????]";
             // 
             // lblAddress
             // 
@@ -162,18 +168,9 @@
             this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddress.Location = new System.Drawing.Point(150, 233);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(0, 20);
+            this.lblAddress.Size = new System.Drawing.Size(53, 20);
             this.lblAddress.TabIndex = 11;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(677, 80);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(138, 135);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.lblAddress.Text = "[????]";
             // 
             // label7
             // 
@@ -222,8 +219,9 @@
             this.lblDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateOfBirth.Location = new System.Drawing.Point(491, 89);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
-            this.lblDateOfBirth.Size = new System.Drawing.Size(0, 20);
+            this.lblDateOfBirth.Size = new System.Drawing.Size(53, 20);
             this.lblDateOfBirth.TabIndex = 17;
+            this.lblDateOfBirth.Text = "[????]";
             // 
             // lblPhone
             // 
@@ -231,8 +229,9 @@
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.Location = new System.Drawing.Point(491, 128);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(0, 20);
+            this.lblPhone.Size = new System.Drawing.Size(53, 20);
             this.lblPhone.TabIndex = 18;
+            this.lblPhone.Text = "[????]";
             // 
             // lblCountry
             // 
@@ -240,8 +239,19 @@
             this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountry.Location = new System.Drawing.Point(491, 174);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(0, 20);
+            this.lblCountry.Size = new System.Drawing.Size(53, 20);
             this.lblCountry.TabIndex = 19;
+            this.lblCountry.Text = "[????]";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(677, 80);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(138, 135);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // ctrlShowPersonDetails
             // 

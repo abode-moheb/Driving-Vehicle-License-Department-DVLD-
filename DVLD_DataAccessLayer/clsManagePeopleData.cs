@@ -238,6 +238,57 @@ namespace DVLD_DataAccessLayer
                 string log = $"[{DateTime.Now}] {ex}\n";
                 File.AppendAllText("log.txt", log);
             }
+
+            finally
+            {
+                connection.Close();
+            }
+           
+            return false;
+
+        }
+
+        static public bool FindPersonUsingNationalNo(ref int PersonID, string NationalNo, ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName,
+           ref DateTime DateOfBirth, ref int Gendor, ref int NationalityCountryID, ref string Email, ref string Phone, ref string Address, ref string ImagePath)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "Select * from People Where NationalNo = @NationalNo";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    PersonID = (int)reader["PersonID"];
+                    FirstName = (string)reader["FirstName"];
+                    SecondName = (string)reader["SecondName"];
+
+                    ThirdName = reader["ThirdName"] != DBNull.Value ? (string)reader["ThirdName"] : "";
+
+                    LastName = (string)reader["LastName"];
+                    DateOfBirth = (DateTime)reader["DateOfBirth"];
+                    Gendor = Convert.ToInt32(reader["Gendor"]);
+                    NationalityCountryID = (int)reader["NationalityCountryID"];
+
+                    Email = reader["Email"] != DBNull.Value ? (string)reader["Email"] : "";
+
+                    Phone = (string)reader["Phone"];
+                    Address = (string)reader["Address"];
+
+                    ImagePath = reader["ImagePath"] != DBNull.Value ? (string)reader["ImagePath"] : "";
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
             connection.Close();
             return false;
 

@@ -229,8 +229,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.images;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;           
             this.pictureBox1.Location = new System.Drawing.Point(677, 105);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(134, 154);

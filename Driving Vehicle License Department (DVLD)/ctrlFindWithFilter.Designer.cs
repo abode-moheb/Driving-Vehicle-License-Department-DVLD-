@@ -54,20 +54,21 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.AddPerson_32;
             this.btnAdd.Location = new System.Drawing.Point(528, 20);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(40, 35);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "addd";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // btnSearch
             // 
+            this.btnSearch.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.SearchPerson;
             this.btnSearch.Location = new System.Drawing.Point(479, 20);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(40, 35);
             this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
@@ -78,6 +79,7 @@
             this.txtFillterBox.Name = "txtFillterBox";
             this.txtFillterBox.Size = new System.Drawing.Size(179, 22);
             this.txtFillterBox.TabIndex = 2;
+            this.txtFillterBox.TextChanged += new System.EventHandler(this.TxtFillterBox_TextChanged);
             this.txtFillterBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFillterBox_KeyPress);
             // 
             // comboBox1

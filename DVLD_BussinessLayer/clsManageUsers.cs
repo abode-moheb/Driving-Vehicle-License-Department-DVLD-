@@ -10,11 +10,86 @@ namespace DVLD_BussinessLayer
 {
     public class clsManageUsers
     {
+        enum enMode { enAddNew, enUpdate };
+        enMode _Mode;
+
+        public clsManageUsers()
+        {
+            _Mode = enMode.enAddNew;
+        }
+
+        clsManageUsers(int PersonID,int UserID, string UserName, string Password , bool IsActive)
+        {
+            this.PersonId = PersonID;
+            this.UserId = UserID;
+            this.UserName = UserName;
+            this.Password = Password;
+            this.IsActive = IsActive;
+
+            _Mode = enMode.enUpdate;
+        }
+
+        public int UserId { set; get; }
+        public int PersonId { set; get; }
+        public string UserName { set; get; }
+        public string Password { set; get; }
+        public bool IsActive { set; get; }
 
         static public DataTable GetAllUsers()
         {
             return clsManageUsersData.GetAllUsers();
         }
 
+        static public bool CheckIfPersonIsUser(int PersonID)
+        {
+            return clsManageUsersData.CheckIfPersonIsUser(PersonID);
+        }
+
+        bool UpdateUser()
+        {
+            return clsManageUsersData.UpdateUser(this.UserId, this.UserName, this.Password, this.IsActive);
+        }
+
+        bool _AddNewUserAndGetID()
+        {
+            this.UserId = clsManageUsersData.AddNewUserAndGetID(PersonId, UserName, Password, IsActive);
+
+            return (UserId != -1);
+        }
+
+        public bool Save()
+        {
+            switch (_Mode)
+            {
+                case enMode.enAddNew:
+                    if (_AddNewUserAndGetID())
+                    {
+                        return true;
+                        _Mode = enMode.enUpdate;
+                    }
+                    else
+                        return false;
+
+                case enMode.enUpdate:
+                    return UpdateUser();                   
+
+            }
+            return false;
+        }
+
+        static public clsManageUsers Find(int PersonID)
+        {
+            int UserID = -1;
+            string UserName = "";
+            string Password = "";
+            bool IsActive = false;
+
+            if (clsManageUsersData.Find(PersonID, ref UserID, ref UserName, ref Password, ref IsActive))
+            {
+                return new clsManageUsers(PersonID, UserID, UserName, Password, IsActive);
+            }
+            else
+                return null;
+        }
     }
 }
