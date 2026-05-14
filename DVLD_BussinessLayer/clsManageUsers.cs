@@ -18,10 +18,10 @@ namespace DVLD_BussinessLayer
             _Mode = enMode.enAddNew;
         }
 
-        clsManageUsers(int PersonID,int UserID, string UserName, string Password , bool IsActive)
+        clsManageUsers(int UserID, int PersonID, string UserName, string Password , bool IsActive)
         {
-            this.PersonId = PersonID;
             this.UserId = UserID;
+            this.PersonId = PersonID;           
             this.UserName = UserName;
             this.Password = Password;
             this.IsActive = IsActive;
@@ -77,19 +77,24 @@ namespace DVLD_BussinessLayer
             return false;
         }
 
-        static public clsManageUsers Find(int PersonID)
+        static public clsManageUsers Find(int UserID)
         {
-            int UserID = -1;
+            int PersonID = -1;
             string UserName = "";
             string Password = "";
             bool IsActive = false;
 
-            if (clsManageUsersData.Find(PersonID, ref UserID, ref UserName, ref Password, ref IsActive))
+            if (clsManageUsersData.Find(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
             {
-                return new clsManageUsers(PersonID, UserID, UserName, Password, IsActive);
+                return new clsManageUsers(UserID, PersonID, UserName, Password, IsActive);
             }
             else
                 return null;
+        }
+
+        static public bool DeleteUser(int UserID)
+        {
+            return clsManageUsersData.DeleteUser(UserID);
         }
     }
 }

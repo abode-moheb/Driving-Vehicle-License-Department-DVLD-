@@ -276,7 +276,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ctrlShowPersonDetails1);
             this.Name = "ChangeUserPasswordForm";
-            this.Text = "ChangeUserPasswordForm";
+            this.Text = "Change User Password";
             this.Load += new System.EventHandler(this.ChangeUserPasswordForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

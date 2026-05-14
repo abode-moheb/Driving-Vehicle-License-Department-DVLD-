@@ -113,13 +113,13 @@ namespace DVLD_DataAccessLayer
             return InsertedID;
         }
 
-        public static bool Find(int PersonID, ref int UserId, ref string UserName, ref string Password , ref bool IsActive)
+        public static bool Find(int UserID, ref int PersonID, ref string UserName, ref string Password , ref bool IsActive)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "Select * from Users Where PersonID = @PersonID";
+            string query = "Select * from Users Where UserID = @UserID";
 
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@UserID", UserID);
 
             try
             {
@@ -127,7 +127,7 @@ namespace DVLD_DataAccessLayer
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    UserId = Convert.ToInt32(reader["UserID"]);
+                    PersonID = Convert.ToInt32(reader["PersonID"]);
                     UserName = (string)reader["UserName"];
                     Password = (string)reader["Password"];
                     IsActive = (bool)reader["IsActive"];
@@ -168,6 +168,29 @@ namespace DVLD_DataAccessLayer
             command.Parameters.AddWithValue("@IsActive", IsActive);                        
            
             int RowsAffected = 0;
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            return (RowsAffected > 0);
+
+        }
+
+        public static bool DeleteUser(int UserID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"Delete from Users Where UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+            int RowsAffected = -1;
             try
             {
                 connection.Open();

@@ -28,5 +28,24 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form UsersForm = new ManageUsersForm();
             UsersForm.Show();
         }
+
+        private void MainPageForm_Load(object sender, EventArgs e)
+        {           
+        }
+
+        private void TsmiCurrentUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TsmiChangePassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TsmiSignOut_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

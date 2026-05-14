@@ -29,11 +29,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Mode = _enMode.enAddNew;
         }
 
-        public AddOrEditUserForm(int PersonID)
+        public AddOrEditUserForm(int UserID)
         {
             InitializeComponent();
             lblHeader.Text = "Update User";
-            FindUserAndShowDetails(PersonID);
+            FindUserAndShowDetails(UserID);
             Mode = _enMode.enUpdate;
         }
         private void AddOrEditUserForm_Load(object sender, EventArgs e)
@@ -177,9 +177,9 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 }          
         }
 
-        void FindUserAndShowDetails(int PersonID)
+        void FindUserAndShowDetails(int UserID)
         {
-            User = clsManageUsers.Find(PersonID);
+            User = clsManageUsers.Find(UserID);
             
             if(User != null)
             {

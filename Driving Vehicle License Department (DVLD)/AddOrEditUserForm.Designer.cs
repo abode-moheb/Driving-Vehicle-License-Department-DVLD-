@@ -377,7 +377,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblHeader);
             this.Name = "AddOrEditUserForm";
-            this.Text = "AddOrEditUserForm";
+            this.Text = "Add or edit user";
             this.Load += new System.EventHandler(this.AddOrEditUserForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.TabPagePersonalInfo.ResumeLayout(false);

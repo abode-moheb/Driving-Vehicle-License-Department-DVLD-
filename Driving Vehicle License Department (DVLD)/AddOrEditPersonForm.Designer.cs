@@ -94,7 +94,7 @@
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.ctrlPerson1);
             this.Name = "AddOrEditPersonForm";
-            this.Text = "AddOrEditPersonForm";
+            this.Text = "Add or edit person";
             this.Load += new System.EventHandler(this.AddOrEditPersonForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

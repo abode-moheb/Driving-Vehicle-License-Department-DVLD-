@@ -48,6 +48,7 @@
             // 
             this.ctrlShowPersonDetails1.Location = new System.Drawing.Point(-5, 81);
             this.ctrlShowPersonDetails1.Name = "ctrlShowPersonDetails1";
+            this.ctrlShowPersonDetails1.PersonID = -1;
             this.ctrlShowPersonDetails1.Size = new System.Drawing.Size(815, 265);
             this.ctrlShowPersonDetails1.TabIndex = 3;
             // 
@@ -70,7 +71,7 @@
             this.Controls.Add(this.ctrlShowPersonDetails1);
             this.Controls.Add(this.lblHeader);
             this.Name = "ShowPersonDetailsForm";
-            this.Text = "ShowPersonDetailsForm";
+            this.Text = "Show Person Details";
             this.Load += new System.EventHandler(this.ShowPersonDetailsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

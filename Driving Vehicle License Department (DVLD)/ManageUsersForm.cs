@@ -37,7 +37,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             LoadUsers();
             comboBox1.SelectedIndex = 0;
-            AddOrEditUserForm.OnSavedClicked += LoadUsers;
+            AddOrEditUserForm.OnSavedClicked += LoadUsers;           
         }
 
         void LoadUsers()
@@ -151,49 +151,69 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         private void ShowDetailstoolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int UserID = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                UserID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
+            Form ShowUserDetails = new ShowUserDetailsForm(UserID);
+            ShowUserDetails.Show();          
         }
 
         private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form AddOrEditUser = new AddOrEditUserForm();
+            AddOrEditUser.ShowDialog();
         }
 
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int PersonId = -1;
+            int UserID = -1;
             if (dataGridView1.SelectedRows.Count > 0)
-                PersonId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+                UserID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
-            Form AddOrEditUser = new AddOrEditUserForm(PersonId);
-            AddOrEditUser.Show();
-            LoadUsers();
+            Form AddOrEditUser = new AddOrEditUserForm(UserID);
+            AddOrEditUser.Show();            
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int UserID = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                UserID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            if(MessageBox.Show("Are you sure you want delete this recorde ? ", "Confirm",MessageBoxButtons.OKCancel,MessageBoxIcon.Asterisk) == DialogResult.OK)
+            {
+                if (clsManageUsers.DeleteUser(UserID))
+                {
+                    MessageBox.Show("User Deleted Successfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    LoadUsers();
+                }
+                else
+                {
+                    MessageBox.Show("User Deleted failed", "failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
         private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int PersonId = -1;
+            int UserID = -1;
             if (dataGridView1.SelectedRows.Count > 0)
-                PersonId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+                UserID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
-            Form ChangePassword = new ChangeUserPasswordForm(PersonId);
-            ChangePassword.Show();
-            LoadUsers();            
+            Form ChangePassword = new ChangeUserPasswordForm(UserID);
+            ChangePassword.Show();                  
         }
 
         private void SendEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This Feature not added yet", "Message",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
         }
 
         private void PhoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This Feature not added yet", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

@@ -15,17 +15,17 @@ namespace Driving_Vehicle_License_Department__DVLD_
     {
 
         clsManageUsers User;
-        public ChangeUserPasswordForm(int PersonID)
+        public ChangeUserPasswordForm(int UserID)
         {
-            InitializeComponent();
-            FindPersonDataAndShow(PersonID);
-            FindUserDataAndShow(PersonID);
+            InitializeComponent();           
+            FindUserDataAndShow(UserID);
         }
-
+      
         private void ChangeUserPasswordForm_Load(object sender, EventArgs e)
         {
 
         }
+
         void FindPersonDataAndShow(int PersonID)
         {
             clsManagePeople Person = clsManagePeople.FindPerson(PersonID);
@@ -39,12 +39,14 @@ namespace Driving_Vehicle_License_Department__DVLD_
             }
         }
 
-        void FindUserDataAndShow(int PersonID)
+        void FindUserDataAndShow(int UserID)
         {
-            User = clsManageUsers.Find(PersonID);
+            User = clsManageUsers.Find(UserID);
 
             if(User != null)
             {
+                FindPersonDataAndShow(User.PersonId);
+
                 lblUserID.Text = User.UserId.ToString();
                 lblUserName.Text = User.UserName;
                 lblIsActive.Text = (User.IsActive ? "Yes" : "No");
@@ -102,6 +104,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             return false;
         }
+
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if (HasErrors())
@@ -112,7 +115,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 User.Password = txtNewPassword.Text;
                 if (User.Save())
                 {
-                    MessageBox.Show("User Save Sucessfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("User Save Sucessfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                    
                 }
                 else
                 {
