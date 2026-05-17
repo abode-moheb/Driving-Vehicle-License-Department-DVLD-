@@ -87,7 +87,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 DefaultView.RowFilter = $"{column} LIKE '%{txtFilterby.Text}%'";
             }
 
-            lblRecordeNumber.Text = dataGridView1.Rows.Count.ToString();
+            lblNumberOfRecords.Text = DefaultView.Count.ToString();          
         }
 
         private void TxtFilterby_TextChanged(object sender, EventArgs e)

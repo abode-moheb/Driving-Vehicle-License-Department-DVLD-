@@ -96,5 +96,39 @@ namespace DVLD_BussinessLayer
         {
             return clsManageUsersData.DeleteUser(UserID);
         }
+
+        static public bool Login(string UserName,string Password, ref bool IsAccountActive)
+        {
+            int UserID = -1;
+            int PersonID = -1;          
+
+            if (clsManageUsersData.Login(UserName, Password, ref UserID, ref PersonID, ref IsAccountActive))
+            {              
+                if (IsAccountActive)
+                {
+                    GlobalSetting.CurrentUser = new clsManageUsers();
+
+                    GlobalSetting.CurrentUser.UserId = UserID;              
+                    GlobalSetting.CurrentUser.IsActive = IsAccountActive;                  
+                }
+                return true;
+            }
+            return false;
+        }
+
+        static public void SaveLastAccountLogin(string UserName, string Password)
+        {
+            clsManageUsersData.SaveLastAccountLogin(UserName, Password);
+        }
+
+        static public bool GetlastAccountLogin(ref string UserName, ref string Password)
+        {
+            return clsManageUsersData.GetlastAccountLogin(ref UserName, ref Password);
+        }
+
+        static public void ClearlastLoginFile()
+        {
+            clsManageUsersData.ClearlastLoginFile();
+        }
     }
 }

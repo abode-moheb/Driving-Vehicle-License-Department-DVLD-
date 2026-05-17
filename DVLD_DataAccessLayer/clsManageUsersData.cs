@@ -201,8 +201,114 @@ namespace DVLD_DataAccessLayer
                 string log = $"[{DateTime.Now}] {ex}\n";
                 File.AppendAllText("log.txt", log);
             }
+            finally
+            {
+                connection.Close();
+            }
             return (RowsAffected > 0);
 
+        }
+
+        static public bool Login(string UserName, string Password, ref int UserID, ref int PersonID, ref bool IsActive)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "Select * from Users where UserName = @UserName And Password = @Password";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@Password", Password);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    UserID = Convert.ToInt32(reader["UserID"]);
+                    PersonID = Convert.ToInt32(reader["PersonID"]);
+                    IsActive = Convert.ToBoolean(reader["IsActive"]);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        static public void SaveLastAccountLogin(string UserName, string Password)
+        {
+
+            string filePath = "LastLogin.txt";
+            try
+            {              
+                string dataToWrite = $"{UserName}#{Password}";                
+                File.WriteAllText(filePath, dataToWrite);
+                
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+        }
+
+        static public bool GetlastAccountLogin(ref string UserName, ref string Password)
+        {
+            string filePath = "LastLogin.txt";
+
+            try
+            {               
+                if (!File.Exists(filePath))
+                {
+                    return false;
+                }
+               
+                string fileContent = File.ReadAllText(filePath).Trim();
+
+                if (string.IsNullOrEmpty(fileContent))
+                {
+                    return false;
+                }
+               
+                string[] data = fileContent.Split('#');
+              
+                if (data.Length == 2)
+                {
+                    UserName = data[0];
+                    Password = data[1];
+                    return true; 
+                }
+            }
+            catch (Exception ex)
+            {               
+                Console.WriteLine("حدث خطأ أثناء قراءة البيانات: " + ex.Message);
+            }
+            
+            return false;
+        }
+
+        static public void ClearlastLoginFile()
+        {
+            string filePath = "LastLogin.txt";
+
+            try
+            {                
+                if (File.Exists(filePath))
+                {
+                    File.WriteAllText(filePath, string.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("حدث خطأ أثناء مسح محتوى الملف: " + ex.Message);
+            }
         }
     }
 }

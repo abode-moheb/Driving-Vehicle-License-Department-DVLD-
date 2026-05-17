@@ -34,12 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSendMessage = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,8 +41,16 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtFilterby = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSendMessage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +58,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(595, 155);
+            this.label1.Location = new System.Drawing.Point(595, 165);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(281, 42);
             this.label1.TabIndex = 0;
@@ -102,49 +104,7 @@
             this.tsmiSendMessage,
             this.tsmiPhoneCall});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 136);
-            // 
-            // tsmiShowDetails
-            // 
-            this.tsmiShowDetails.Name = "tsmiShowDetails";
-            this.tsmiShowDetails.Size = new System.Drawing.Size(160, 22);
-            this.tsmiShowDetails.Text = "Show Details";
-            this.tsmiShowDetails.Click += new System.EventHandler(this.TsmiShowDetails_Click);
-            // 
-            // tsmiAddNewPerson
-            // 
-            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
-            this.tsmiAddNewPerson.Size = new System.Drawing.Size(160, 22);
-            this.tsmiAddNewPerson.Text = "Add new person";
-            this.tsmiAddNewPerson.Click += new System.EventHandler(this.TsmiAddNewPerson_Click);
-            // 
-            // tsmiEdit
-            // 
-            this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(160, 22);
-            this.tsmiEdit.Text = "Edit";
-            this.tsmiEdit.Click += new System.EventHandler(this.TsmiEdit_Click);
-            // 
-            // tsmiDelete
-            // 
-            this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(160, 22);
-            this.tsmiDelete.Text = "Delete";
-            this.tsmiDelete.Click += new System.EventHandler(this.TsmiDelete_Click);
-            // 
-            // tsmiSendMessage
-            // 
-            this.tsmiSendMessage.Name = "tsmiSendMessage";
-            this.tsmiSendMessage.Size = new System.Drawing.Size(160, 22);
-            this.tsmiSendMessage.Text = "Send message";
-            this.tsmiSendMessage.Click += new System.EventHandler(this.TsmiSendMessage_Click);
-            // 
-            // tsmiPhoneCall
-            // 
-            this.tsmiPhoneCall.Name = "tsmiPhoneCall";
-            this.tsmiPhoneCall.Size = new System.Drawing.Size(160, 22);
-            this.tsmiPhoneCall.Text = "Phone Call";
-            this.tsmiPhoneCall.Click += new System.EventHandler(this.TsmiPhoneCall_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 232);
             // 
             // label2
             // 
@@ -228,11 +188,77 @@
             this.txtFilterby.TextChanged += new System.EventHandler(this.TxtFilterby_TextChanged);
             this.txtFilterby.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterby_KeyPress);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.People_400;
+            this.pictureBox1.Location = new System.Drawing.Point(576, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(321, 152);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tsmiShowDetails
+            // 
+            this.tsmiShowDetails.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.PersonDetails_32;
+            this.tsmiShowDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowDetails.Name = "tsmiShowDetails";
+            this.tsmiShowDetails.Size = new System.Drawing.Size(176, 38);
+            this.tsmiShowDetails.Text = "Show Details";
+            this.tsmiShowDetails.Click += new System.EventHandler(this.TsmiShowDetails_Click);
+            // 
+            // tsmiAddNewPerson
+            // 
+            this.tsmiAddNewPerson.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.AddPerson_32;
+            this.tsmiAddNewPerson.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
+            this.tsmiAddNewPerson.Size = new System.Drawing.Size(176, 38);
+            this.tsmiAddNewPerson.Text = "Add new person";
+            this.tsmiAddNewPerson.Click += new System.EventHandler(this.TsmiAddNewPerson_Click);
+            // 
+            // tsmiEdit
+            // 
+            this.tsmiEdit.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.edit_32;
+            this.tsmiEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiEdit.Name = "tsmiEdit";
+            this.tsmiEdit.Size = new System.Drawing.Size(176, 38);
+            this.tsmiEdit.Text = "Edit";
+            this.tsmiEdit.Click += new System.EventHandler(this.TsmiEdit_Click);
+            // 
+            // tsmiDelete
+            // 
+            this.tsmiDelete.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Delete_32;
+            this.tsmiDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDelete.Name = "tsmiDelete";
+            this.tsmiDelete.Size = new System.Drawing.Size(176, 38);
+            this.tsmiDelete.Text = "Delete";
+            this.tsmiDelete.Click += new System.EventHandler(this.TsmiDelete_Click);
+            // 
+            // tsmiSendMessage
+            // 
+            this.tsmiSendMessage.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.send_email_32;
+            this.tsmiSendMessage.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSendMessage.Name = "tsmiSendMessage";
+            this.tsmiSendMessage.Size = new System.Drawing.Size(176, 38);
+            this.tsmiSendMessage.Text = "Send message";
+            this.tsmiSendMessage.Click += new System.EventHandler(this.TsmiSendMessage_Click);
+            // 
+            // tsmiPhoneCall
+            // 
+            this.tsmiPhoneCall.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.call_32;
+            this.tsmiPhoneCall.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiPhoneCall.Name = "tsmiPhoneCall";
+            this.tsmiPhoneCall.Size = new System.Drawing.Size(176, 38);
+            this.tsmiPhoneCall.Text = "Phone Call";
+            this.tsmiPhoneCall.Click += new System.EventHandler(this.TsmiPhoneCall_Click);
+            // 
             // ManagePeopleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 639);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtFilterby);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
@@ -247,6 +273,7 @@
             this.Load += new System.EventHandler(this.ManagePeopleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +297,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSendMessage;
         private System.Windows.Forms.ToolStripMenuItem tsmiPhoneCall;
         private System.Windows.Forms.TextBox txtFilterby;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

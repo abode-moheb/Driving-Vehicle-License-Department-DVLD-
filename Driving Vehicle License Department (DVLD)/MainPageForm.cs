@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_BussinessLayer;
 
 namespace Driving_Vehicle_License_Department__DVLD_
 {
@@ -31,21 +32,26 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         private void MainPageForm_Load(object sender, EventArgs e)
         {           
+
         }
 
         private void TsmiCurrentUser_Click(object sender, EventArgs e)
         {
-
+            Form ShowUserDetails = new ShowUserDetailsForm(GlobalSetting.CurrentUser.UserId);
+            ShowUserDetails.Show();
         }
 
         private void TsmiChangePassword_Click(object sender, EventArgs e)
         {
+            Form ChangePassword = new ChangeUserPasswordForm(GlobalSetting.CurrentUser.UserId);
+            ChangePassword.Show();
 
         }
 
         private void TsmiSignOut_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            GlobalSetting.Logout();
         }
     }
 }
