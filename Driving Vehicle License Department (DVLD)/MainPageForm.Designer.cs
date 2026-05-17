@@ -30,6 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDrivingLicenceServices = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManageApplications = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDetainLicence = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManageApplicationTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.pepoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +63,12 @@
             // 
             // applicationToolStripMenuItem
             // 
+            this.applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDrivingLicenceServices,
+            this.tsmiManageApplications,
+            this.tsmiDetainLicence,
+            this.tsmiManageApplicationTypes,
+            this.tsmiManageTestTypes});
             this.applicationToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applicationToolStripMenuItem.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Applications_64;
             this.applicationToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -65,6 +76,52 @@
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(234, 68);
             this.applicationToolStripMenuItem.Text = "Applications";
+            // 
+            // tsmiDrivingLicenceServices
+            // 
+            this.tsmiDrivingLicenceServices.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.tsmiDrivingLicenceServices.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Driver_License_48;
+            this.tsmiDrivingLicenceServices.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDrivingLicenceServices.Name = "tsmiDrivingLicenceServices";
+            this.tsmiDrivingLicenceServices.Size = new System.Drawing.Size(421, 70);
+            this.tsmiDrivingLicenceServices.Text = "Driving Licence Services";
+            // 
+            // tsmiManageApplications
+            // 
+            this.tsmiManageApplications.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.tsmiManageApplications.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Manage_Applications_64;
+            this.tsmiManageApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiManageApplications.Name = "tsmiManageApplications";
+            this.tsmiManageApplications.Size = new System.Drawing.Size(421, 70);
+            this.tsmiManageApplications.Text = "Manage Applications";
+            // 
+            // tsmiDetainLicence
+            // 
+            this.tsmiDetainLicence.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.tsmiDetainLicence.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Detain_64;
+            this.tsmiDetainLicence.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDetainLicence.Name = "tsmiDetainLicence";
+            this.tsmiDetainLicence.Size = new System.Drawing.Size(421, 70);
+            this.tsmiDetainLicence.Text = "Detain Licence";
+            // 
+            // tsmiManageApplicationTypes
+            // 
+            this.tsmiManageApplicationTypes.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.tsmiManageApplicationTypes.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Application_Types_64;
+            this.tsmiManageApplicationTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiManageApplicationTypes.Name = "tsmiManageApplicationTypes";
+            this.tsmiManageApplicationTypes.Size = new System.Drawing.Size(421, 70);
+            this.tsmiManageApplicationTypes.Text = "Manage Application Types";
+            this.tsmiManageApplicationTypes.Click += new System.EventHandler(this.TsmiManageApplicationTypes_Click);
+            // 
+            // tsmiManageTestTypes
+            // 
+            this.tsmiManageTestTypes.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.tsmiManageTestTypes.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Test_Type_64;
+            this.tsmiManageTestTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiManageTestTypes.Name = "tsmiManageTestTypes";
+            this.tsmiManageTestTypes.Size = new System.Drawing.Size(421, 70);
+            this.tsmiManageTestTypes.Text = "ManageTestTypes";
             // 
             // pepoleToolStripMenuItem
             // 
@@ -172,6 +229,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCurrentUser;
         private System.Windows.Forms.ToolStripMenuItem tsmiChangePassword;
         private System.Windows.Forms.ToolStripMenuItem tsmiSignOut;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDrivingLicenceServices;
+        private System.Windows.Forms.ToolStripMenuItem tsmiManageApplications;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDetainLicence;
+        private System.Windows.Forms.ToolStripMenuItem tsmiManageApplicationTypes;
+        private System.Windows.Forms.ToolStripMenuItem tsmiManageTestTypes;
     }
 }
 

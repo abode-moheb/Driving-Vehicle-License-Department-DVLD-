@@ -53,5 +53,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             this.Close();
             GlobalSetting.Logout();
         }
+
+        private void TsmiManageApplicationTypes_Click(object sender, EventArgs e)
+        {
+            Form ManageApplicationType = new ManageApplicationTypeForm();
+            ManageApplicationType.Show();
+        }
     }
 }

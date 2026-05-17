@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsManageApplicationsTypes.cs" />
     <Compile Include="clsManagePeople.cs" />
     <Compile Include="clsManageUsers.cs" />
     <Compile Include="GlobalSetting.cs" />
