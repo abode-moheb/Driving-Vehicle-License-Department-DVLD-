@@ -122,6 +122,7 @@
             this.tsmiManageTestTypes.Name = "tsmiManageTestTypes";
             this.tsmiManageTestTypes.Size = new System.Drawing.Size(421, 70);
             this.tsmiManageTestTypes.Text = "ManageTestTypes";
+            this.tsmiManageTestTypes.Click += new System.EventHandler(this.TsmiManageTestTypes_Click);
             // 
             // pepoleToolStripMenuItem
             // 

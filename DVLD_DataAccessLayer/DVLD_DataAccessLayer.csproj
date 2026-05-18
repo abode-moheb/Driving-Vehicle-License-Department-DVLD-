@@ -44,6 +44,7 @@
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsManageApplicationsTypesData.cs" />
     <Compile Include="clsManagePeopleData.cs" />
+    <Compile Include="clsManageTestTypesData.cs" />
     <Compile Include="clsManageUsersData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

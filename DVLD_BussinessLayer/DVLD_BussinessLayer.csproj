@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsManageApplicationsTypes.cs" />
     <Compile Include="clsManagePeople.cs" />
+    <Compile Include="clsManageTestTypes.cs" />
     <Compile Include="clsManageUsers.cs" />
     <Compile Include="GlobalSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

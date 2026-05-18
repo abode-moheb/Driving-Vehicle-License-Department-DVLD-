@@ -59,5 +59,12 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form ManageApplicationType = new ManageApplicationTypeForm();
             ManageApplicationType.Show();
         }
+
+        private void TsmiManageTestTypes_Click(object sender, EventArgs e)
+        {
+            Form ManageTestTypes = new ManageTestTypesForm();
+            ManageTestTypes.Show();
+
+        }
     }
 }
