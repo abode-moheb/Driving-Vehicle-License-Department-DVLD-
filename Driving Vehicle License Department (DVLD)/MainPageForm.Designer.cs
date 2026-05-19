@@ -31,7 +31,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDrivingLicenceServices = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNewDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLocalLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInternationalLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRenewDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRepleacmentforLostOrDamgedLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReleaseDetinedDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRetakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiManageApplications = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLocalDrivingLicenseApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInternationalLicenseApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDetainLicence = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiManageApplicationTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +88,12 @@
             // 
             // tsmiDrivingLicenceServices
             // 
+            this.tsmiDrivingLicenceServices.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNewDrivingLicense,
+            this.tsmiRenewDrivingLicense,
+            this.tsmiRepleacmentforLostOrDamgedLicense,
+            this.tsmiReleaseDetinedDrivingLicense,
+            this.tsmiRetakeTest});
             this.tsmiDrivingLicenceServices.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.tsmiDrivingLicenceServices.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Driver_License_48;
             this.tsmiDrivingLicenceServices.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -86,14 +101,93 @@
             this.tsmiDrivingLicenceServices.Size = new System.Drawing.Size(421, 70);
             this.tsmiDrivingLicenceServices.Text = "Driving Licence Services";
             // 
+            // tsmiNewDrivingLicense
+            // 
+            this.tsmiNewDrivingLicense.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiLocalLicense,
+            this.tsmiInternationalLicense});
+            this.tsmiNewDrivingLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.New_Driving_License_32;
+            this.tsmiNewDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiNewDrivingLicense.Name = "tsmiNewDrivingLicense";
+            this.tsmiNewDrivingLicense.Size = new System.Drawing.Size(547, 38);
+            this.tsmiNewDrivingLicense.Text = "New Driving License";
+            // 
+            // tsmiLocalLicense
+            // 
+            this.tsmiLocalLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Local_32;
+            this.tsmiLocalLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiLocalLicense.Name = "tsmiLocalLicense";
+            this.tsmiLocalLicense.Size = new System.Drawing.Size(326, 38);
+            this.tsmiLocalLicense.Text = "Local License";
+            this.tsmiLocalLicense.Click += new System.EventHandler(this.TsmiLocalLicense_Click);
+            // 
+            // tsmiInternationalLicense
+            // 
+            this.tsmiInternationalLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.International_32;
+            this.tsmiInternationalLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiInternationalLicense.Name = "tsmiInternationalLicense";
+            this.tsmiInternationalLicense.Size = new System.Drawing.Size(326, 38);
+            this.tsmiInternationalLicense.Text = "International License";
+            // 
+            // tsmiRenewDrivingLicense
+            // 
+            this.tsmiRenewDrivingLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Renew_Driving_License_32;
+            this.tsmiRenewDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiRenewDrivingLicense.Name = "tsmiRenewDrivingLicense";
+            this.tsmiRenewDrivingLicense.Size = new System.Drawing.Size(547, 38);
+            this.tsmiRenewDrivingLicense.Text = "Renew Driving License";
+            // 
+            // tsmiRepleacmentforLostOrDamgedLicense
+            // 
+            this.tsmiRepleacmentforLostOrDamgedLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Lost_Driving_License_32;
+            this.tsmiRepleacmentforLostOrDamgedLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiRepleacmentforLostOrDamgedLicense.Name = "tsmiRepleacmentforLostOrDamgedLicense";
+            this.tsmiRepleacmentforLostOrDamgedLicense.Size = new System.Drawing.Size(547, 38);
+            this.tsmiRepleacmentforLostOrDamgedLicense.Text = "Repleacment for Lost Or Damged License";
+            // 
+            // tsmiReleaseDetinedDrivingLicense
+            // 
+            this.tsmiReleaseDetinedDrivingLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Detained_Driving_License_32;
+            this.tsmiReleaseDetinedDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiReleaseDetinedDrivingLicense.Name = "tsmiReleaseDetinedDrivingLicense";
+            this.tsmiReleaseDetinedDrivingLicense.Size = new System.Drawing.Size(547, 38);
+            this.tsmiReleaseDetinedDrivingLicense.Text = "Release Detined Driving License";
+            // 
+            // tsmiRetakeTest
+            // 
+            this.tsmiRetakeTest.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Retake_Test_32;
+            this.tsmiRetakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiRetakeTest.Name = "tsmiRetakeTest";
+            this.tsmiRetakeTest.Size = new System.Drawing.Size(547, 38);
+            this.tsmiRetakeTest.Text = "Retake Test";
+            // 
             // tsmiManageApplications
             // 
+            this.tsmiManageApplications.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiLocalDrivingLicenseApplication,
+            this.tsmiInternationalLicenseApplication});
             this.tsmiManageApplications.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.tsmiManageApplications.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Manage_Applications_64;
             this.tsmiManageApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiManageApplications.Name = "tsmiManageApplications";
             this.tsmiManageApplications.Size = new System.Drawing.Size(421, 70);
             this.tsmiManageApplications.Text = "Manage Applications";
+            // 
+            // tsmiLocalDrivingLicenseApplication
+            // 
+            this.tsmiLocalDrivingLicenseApplication.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.LocalDriving_License1;
+            this.tsmiLocalDrivingLicenseApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiLocalDrivingLicenseApplication.Name = "tsmiLocalDrivingLicenseApplication";
+            this.tsmiLocalDrivingLicenseApplication.Size = new System.Drawing.Size(456, 38);
+            this.tsmiLocalDrivingLicenseApplication.Text = "Local Driving License Application";
+            // 
+            // tsmiInternationalLicenseApplication
+            // 
+            this.tsmiInternationalLicenseApplication.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.International_32;
+            this.tsmiInternationalLicenseApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiInternationalLicenseApplication.Name = "tsmiInternationalLicenseApplication";
+            this.tsmiInternationalLicenseApplication.Size = new System.Drawing.Size(456, 38);
+            this.tsmiInternationalLicenseApplication.Text = "International License Application";
             // 
             // tsmiDetainLicence
             // 
@@ -235,6 +329,15 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiDetainLicence;
         private System.Windows.Forms.ToolStripMenuItem tsmiManageApplicationTypes;
         private System.Windows.Forms.ToolStripMenuItem tsmiManageTestTypes;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNewDrivingLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRenewDrivingLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRepleacmentforLostOrDamgedLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReleaseDetinedDrivingLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRetakeTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLocalLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiInternationalLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLocalDrivingLicenseApplication;
+        private System.Windows.Forms.ToolStripMenuItem tsmiInternationalLicenseApplication;
     }
 }
 

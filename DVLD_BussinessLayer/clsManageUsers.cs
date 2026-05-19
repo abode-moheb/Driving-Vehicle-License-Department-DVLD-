@@ -108,7 +108,9 @@ namespace DVLD_BussinessLayer
                 {
                     GlobalSetting.CurrentUser = new clsManageUsers();
 
-                    GlobalSetting.CurrentUser.UserId = UserID;              
+                    GlobalSetting.CurrentUser.UserId = UserID;
+                    GlobalSetting.CurrentUser.UserName = UserName;
+                    GlobalSetting.CurrentUser.PersonId = PersonID;
                     GlobalSetting.CurrentUser.IsActive = IsAccountActive;                  
                 }
                 return true;

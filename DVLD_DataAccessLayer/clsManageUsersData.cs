@@ -40,7 +40,10 @@ namespace DVLD_DataAccessLayer
                 string log = $"[{DateTime.Now}] {ex}\n";
                 File.AppendAllText("log.txt", log);
             }
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
             return dataTable;
         }
 
@@ -107,7 +110,10 @@ namespace DVLD_DataAccessLayer
                 string log = $"[{DateTime.Now}] {ex}\n";
                 File.AppendAllText("log.txt", log);
             }
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
 
 
             return InsertedID;
@@ -177,6 +183,10 @@ namespace DVLD_DataAccessLayer
             {
                 string log = $"[{DateTime.Now}] {ex}\n";
                 File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
             }
             return (RowsAffected > 0);
 
