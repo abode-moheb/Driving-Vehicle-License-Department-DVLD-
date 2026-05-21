@@ -163,7 +163,8 @@ namespace DVLD_DataAccessLayer
             string query = @"SELECT        Applications.ApplicationID
                             FROM            Applications INNER JOIN
                                                      LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
-                            WHERE        (Applications.ApplicantPersonID = @PersonID) AND (LocalDrivingLicenseApplications.LicenseClassID = @LicsenseClassIndex)";
+                            WHERE        (Applications.ApplicantPersonID = @PersonID) AND (LocalDrivingLicenseApplications.LicenseClassID = @LicsenseClassIndex)
+							AND (ApplicationStatus != 2)";
                             
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -193,6 +194,39 @@ namespace DVLD_DataAccessLayer
                 connection.Close();
             }
             return false;
+        }
+
+        // Manage Local dirving Application Form
+
+        static public DataTable GetLocalDrivingLicenseApplicationTable()
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT        LocalDrivingLicenseApplications_View.*
+                                FROM LocalDrivingLicenseApplications_View";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable;
         }
 
     }

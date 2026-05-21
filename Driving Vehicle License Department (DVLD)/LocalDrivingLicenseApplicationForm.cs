@@ -13,6 +13,9 @@ namespace Driving_Vehicle_License_Department__DVLD_
 {
     public partial class LocalDrivingLicenseApplicationForm : Form
     {
+        enum enStatus { enNew = 1, enCancelled , enComplete}
+        enStatus Status = enStatus.enNew;
+
         clsManagePeople Person;
         clsLocalDrivingLicenseApplication LocalApplication;
         public LocalDrivingLicenseApplicationForm()
@@ -118,11 +121,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
           
            
             LocalApplication.ApplicationPersonID = Person.PersonID;
-            LocalApplication.ApplicationDate = DateTime.Today;
+            LocalApplication.ApplicationDate = DateTime.Now;
             LocalApplication.CreatedByUserID = GlobalSetting.CurrentUser.UserId;
 
-            LocalApplication.ApplicationStatus = 1;
-            LocalApplication.LastStatusDate = DateTime.Today;
+            LocalApplication.ApplicationStatus = (int)Status;
+            LocalApplication.LastStatusDate = DateTime.Now;
             LocalApplication.PaidFees = clsLocalDrivingLicenseApplication.GetPaidFeesForLocalDrivingLicense();
 
             LocalApplication.LicenseClassID = (int)cbLicenseClass.SelectedIndex + 1;
@@ -134,6 +137,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 lblApplicationID.Text = LocalApplication.ApplicationID.ToString();
                 lblHeader.Text = "Update Local Driving License Application";
                 MessageBox.Show("Saved Successfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
@@ -141,6 +145,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             }
                                
         }
-              
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.DialogResult = DialogResult.Cancel;
+        }
     }
 }

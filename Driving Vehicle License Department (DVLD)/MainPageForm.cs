@@ -72,5 +72,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form LocalDrivingLicenseApplication = new LocalDrivingLicenseApplicationForm();
             LocalDrivingLicenseApplication.Show();
         }
+
+        private void TsmiLocalDrivingLicenseApplication_Click(object sender, EventArgs e)
+        {
+            Form ManageLocalDrivingLicenseApplication = new ManageLocalDrivingLicenseApplicationForm();
+            ManageLocalDrivingLicenseApplication.Show();
+        }
     }
 }

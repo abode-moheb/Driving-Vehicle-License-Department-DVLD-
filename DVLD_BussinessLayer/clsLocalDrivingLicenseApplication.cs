@@ -70,5 +70,12 @@ namespace DVLD_BussinessLayer
         {
             return clsLocalDrivingLicenseApplicationData.CheckIfApplicationIsExist(PersonID,LicsenseClassIndex, ref ApplicationID);
         }
+
+        // Manage Local dirving Application Form
+
+        static public DataTable GetLocalDrivingLicenseApplicationTable()
+        {
+            return clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationTable();
+        }
     }
 }
