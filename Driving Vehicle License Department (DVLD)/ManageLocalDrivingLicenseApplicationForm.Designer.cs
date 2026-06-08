@@ -29,25 +29,35 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtFilterby = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordeNumber = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSendMessage = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiShowAppDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiEditApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeleteApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCancelApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSechduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSechduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSechduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSechduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiIssueDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiShowLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -64,17 +74,6 @@
             this.txtFilterby.TabIndex = 31;
             this.txtFilterby.TextChanged += new System.EventHandler(this.TxtFilterby_TextChanged_1);
             this.txtFilterby.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterby_KeyPress_1);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1348, 652);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 33);
-            this.btnClose.TabIndex = 30;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // lblRecordeNumber
             // 
@@ -125,62 +124,143 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiShowDetails,
-            this.tsmiAddNewPerson,
-            this.tsmiEdit,
-            this.tsmiDelete,
-            this.tsmiSendMessage,
-            this.tsmiPhoneCall});
+            this.tsmiShowAppDetails,
+            this.toolStripSeparator1,
+            this.tsmiEditApp,
+            this.tsmiDeleteApp,
+            this.tsmiCancelApp,
+            this.toolStripSeparator5,
+            this.tsmiSechduleTests,
+            this.toolStripSeparator2,
+            this.tsmiIssueDrivingLicense,
+            this.toolStripSeparator3,
+            this.tsmiShowLicense,
+            this.toolStripSeparator4,
+            this.tsmiShowPersonLicenseHistory});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 232);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(259, 360);
             // 
-            // tsmiShowDetails
+            // tsmiShowAppDetails
             // 
-            this.tsmiShowDetails.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.PersonDetails_32;
-            this.tsmiShowDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiShowDetails.Name = "tsmiShowDetails";
-            this.tsmiShowDetails.Size = new System.Drawing.Size(176, 38);
-            this.tsmiShowDetails.Text = "Show Details";
+            this.tsmiShowAppDetails.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.PersonDetails_32;
+            this.tsmiShowAppDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowAppDetails.Name = "tsmiShowAppDetails";
+            this.tsmiShowAppDetails.Size = new System.Drawing.Size(258, 38);
+            this.tsmiShowAppDetails.Text = "Show Application Details";
+            this.tsmiShowAppDetails.Click += new System.EventHandler(this.TsmiShowAppDetails_Click);
             // 
-            // tsmiAddNewPerson
+            // toolStripSeparator1
             // 
-            this.tsmiAddNewPerson.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.AddPerson_32;
-            this.tsmiAddNewPerson.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
-            this.tsmiAddNewPerson.Size = new System.Drawing.Size(176, 38);
-            this.tsmiAddNewPerson.Text = "Add new person";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
             // 
-            // tsmiEdit
+            // tsmiEditApp
             // 
-            this.tsmiEdit.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.edit_32;
-            this.tsmiEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(176, 38);
-            this.tsmiEdit.Text = "Edit";
+            this.tsmiEditApp.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.edit_32;
+            this.tsmiEditApp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiEditApp.Name = "tsmiEditApp";
+            this.tsmiEditApp.Size = new System.Drawing.Size(258, 38);
+            this.tsmiEditApp.Text = "Edit Application";
+            this.tsmiEditApp.Click += new System.EventHandler(this.TsmiEditApp_Click);
             // 
-            // tsmiDelete
+            // tsmiDeleteApp
             // 
-            this.tsmiDelete.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Delete_32;
-            this.tsmiDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(176, 38);
-            this.tsmiDelete.Text = "Delete";
+            this.tsmiDeleteApp.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Delete_32_2;
+            this.tsmiDeleteApp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDeleteApp.Name = "tsmiDeleteApp";
+            this.tsmiDeleteApp.Size = new System.Drawing.Size(258, 38);
+            this.tsmiDeleteApp.Text = "Delete Application";
+            this.tsmiDeleteApp.Click += new System.EventHandler(this.TsmiDeleteApp_Click);
             // 
-            // tsmiSendMessage
+            // tsmiCancelApp
             // 
-            this.tsmiSendMessage.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.send_email_32;
-            this.tsmiSendMessage.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiSendMessage.Name = "tsmiSendMessage";
-            this.tsmiSendMessage.Size = new System.Drawing.Size(176, 38);
-            this.tsmiSendMessage.Text = "Send message";
+            this.tsmiCancelApp.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Delete_32;
+            this.tsmiCancelApp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiCancelApp.Name = "tsmiCancelApp";
+            this.tsmiCancelApp.Size = new System.Drawing.Size(258, 38);
+            this.tsmiCancelApp.Text = "Cancel Application";
+            this.tsmiCancelApp.Click += new System.EventHandler(this.TsmiCancelApp_Click);
             // 
-            // tsmiPhoneCall
+            // toolStripSeparator5
             // 
-            this.tsmiPhoneCall.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.call_32;
-            this.tsmiPhoneCall.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiPhoneCall.Name = "tsmiPhoneCall";
-            this.tsmiPhoneCall.Size = new System.Drawing.Size(176, 38);
-            this.tsmiPhoneCall.Text = "Phone Call";
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(255, 6);
+            // 
+            // tsmiSechduleTests
+            // 
+            this.tsmiSechduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSechduleVisionTest,
+            this.tsmiSechduleWrittenTest,
+            this.tsmiSechduleStreetTest});
+            this.tsmiSechduleTests.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.TestType_32;
+            this.tsmiSechduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSechduleTests.Name = "tsmiSechduleTests";
+            this.tsmiSechduleTests.Size = new System.Drawing.Size(258, 38);
+            this.tsmiSechduleTests.Text = "Sechdule Tests";
+            // 
+            // tsmiSechduleVisionTest
+            // 
+            this.tsmiSechduleVisionTest.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Vision_Test_32;
+            this.tsmiSechduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSechduleVisionTest.Name = "tsmiSechduleVisionTest";
+            this.tsmiSechduleVisionTest.Size = new System.Drawing.Size(203, 38);
+            this.tsmiSechduleVisionTest.Text = "Sechdule Vision Test";
+            this.tsmiSechduleVisionTest.Click += new System.EventHandler(this.TsmiSechduleVisionTest_Click);
+            // 
+            // tsmiSechduleWrittenTest
+            // 
+            this.tsmiSechduleWrittenTest.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Written_Test_32;
+            this.tsmiSechduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSechduleWrittenTest.Name = "tsmiSechduleWrittenTest";
+            this.tsmiSechduleWrittenTest.Size = new System.Drawing.Size(203, 38);
+            this.tsmiSechduleWrittenTest.Text = "Sechdule Written Test";
+            // 
+            // tsmiSechduleStreetTest
+            // 
+            this.tsmiSechduleStreetTest.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Street_Test_32;
+            this.tsmiSechduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSechduleStreetTest.Name = "tsmiSechduleStreetTest";
+            this.tsmiSechduleStreetTest.Size = new System.Drawing.Size(203, 38);
+            this.tsmiSechduleStreetTest.Text = "Sechdule Street Test";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(255, 6);
+            // 
+            // tsmiIssueDrivingLicense
+            // 
+            this.tsmiIssueDrivingLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.IssueDrivingLicense_32;
+            this.tsmiIssueDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiIssueDrivingLicense.Name = "tsmiIssueDrivingLicense";
+            this.tsmiIssueDrivingLicense.Size = new System.Drawing.Size(258, 38);
+            this.tsmiIssueDrivingLicense.Text = "Issue Driving License(First Time)";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(255, 6);
+            // 
+            // tsmiShowLicense
+            // 
+            this.tsmiShowLicense.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.LocalDriving_License;
+            this.tsmiShowLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowLicense.Name = "tsmiShowLicense";
+            this.tsmiShowLicense.Size = new System.Drawing.Size(258, 38);
+            this.tsmiShowLicense.Text = "Show License";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(255, 6);
+            // 
+            // tsmiShowPersonLicenseHistory
+            // 
+            this.tsmiShowPersonLicenseHistory.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.PersonLicenseHistory_32;
+            this.tsmiShowPersonLicenseHistory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowPersonLicenseHistory.Name = "tsmiShowPersonLicenseHistory";
+            this.tsmiShowPersonLicenseHistory.Size = new System.Drawing.Size(258, 38);
+            this.tsmiShowPersonLicenseHistory.Text = "Person License History";
             // 
             // dataGridView1
             // 
@@ -188,24 +268,24 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(14, 285);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -245,6 +325,17 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1348, 652);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 33);
+            this.btnClose.TabIndex = 30;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
@@ -294,15 +385,25 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPhoneCall;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
-        private System.Windows.Forms.ToolStripMenuItem tsmiEdit;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAddNewPerson;
-        private System.Windows.Forms.ToolStripMenuItem tsmiShowDetails;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSechduleTests;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeleteApp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditApp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowAppDetails;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSendMessage;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCancelApp;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiIssueDrivingLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowPersonLicenseHistory;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSechduleVisionTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSechduleWrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSechduleStreetTest;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

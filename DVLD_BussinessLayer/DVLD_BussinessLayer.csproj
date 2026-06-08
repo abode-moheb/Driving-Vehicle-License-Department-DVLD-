@@ -46,6 +46,8 @@
     <Compile Include="clsManagePeople.cs" />
     <Compile Include="clsManageTestTypes.cs" />
     <Compile Include="clsManageUsers.cs" />
+    <Compile Include="clsTestAppointemtsDTO.cs" />
+    <Compile Include="clsTestAppointments.cs" />
     <Compile Include="GlobalSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

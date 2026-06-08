@@ -16,14 +16,41 @@ namespace Driving_Vehicle_License_Department__DVLD_
         enum enStatus { enNew = 1, enCancelled , enComplete}
         enStatus Status = enStatus.enNew;
 
+        enum enMode { enAddnew, enUpdate };
+        enMode _FormMode = enMode.enAddnew;
+
         clsManagePeople Person;
         clsLocalDrivingLicenseApplication LocalApplication;
         public LocalDrivingLicenseApplicationForm()
         {
+            _FormMode = enMode.enAddnew;
             InitializeComponent();
-            LocalApplication = new clsLocalDrivingLicenseApplication();
+            LocalApplication = new clsLocalDrivingLicenseApplication();            
+        }
+
+        public LocalDrivingLicenseApplicationForm(int LocalDrivingLicenseAppID)
+        {
+            _FormMode = enMode.enUpdate;
+            InitializeComponent();
+            lblHeader.Text = "Update Local Driving License Application";
+            LocalApplication = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseAppID);
+
+            ShowLocalDrivingLicenseAppData();
         }
        
+        void ShowLocalDrivingLicenseAppData()
+        {           
+            FindUsePersonID(LocalApplication.ApplicationPersonID);
+            lblApplicationID.Text = LocalApplication.ApplicationID.ToString();
+            lblApplicationDate.Text = LocalApplication.ApplicationDate.ToShortDateString();
+
+            GetComboBoxLicenseClass();
+            cbLicenseClass.SelectedIndex = (LocalApplication.LicenseClassID - 1);
+            lblApplicationFees.Text = LocalApplication.PaidFees.ToString();
+
+            lblCreatedBy.Text = clsManageUsers.GetUserNameByUserId(LocalApplication.CreatedByUserID);
+        }
+
         private void LocalDrivingLicenseApplicationForm_Load(object sender, EventArgs e)
         {
             ctrlFindWithFilter1.FindUseNationalNo += FindUseNatoinalNo;
@@ -31,7 +58,16 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             AddOrEditPersonForm.DataBack += FindUsePersonID;
 
-            FillingApplicationInfoForm();            
+
+            if (_FormMode == enMode.enAddnew)
+            {
+                FillingApplicationInfoForm();               
+            }
+            else
+            {
+                ctrlFindWithFilter1.Enabled = false;
+                ctrlShowPersonDetails1.Enabled = false;
+            }
         }
 
         void FillingApplicationInfoForm()
@@ -40,6 +76,12 @@ namespace Driving_Vehicle_License_Department__DVLD_
             lblApplicationFees.Text = clsLocalDrivingLicenseApplication.GetPaidFeesForLocalDrivingLicense().ToString();
             lblCreatedBy.Text = GlobalSetting.CurrentUser.UserName;
 
+            GetComboBoxLicenseClass();
+            cbLicenseClass.SelectedIndex = 2;
+        }
+
+        void GetComboBoxLicenseClass()
+        {
             DataTable datatable = new DataTable();
 
             datatable = clsLocalDrivingLicenseApplication.GetLicenseClassTable();
@@ -48,8 +90,6 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             cbLicenseClass.ValueMember = datatable.Columns["LicenseClassID"].ColumnName;
             cbLicenseClass.DisplayMember = datatable.Columns["ClassName"].ColumnName;
-
-            cbLicenseClass.SelectedIndex = 2;
         }
 
         void FindUseNatoinalNo(string NationalNo)
@@ -68,6 +108,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         void FindUsePersonID(int PersonID)
         {
+         
             ctrlFindWithFilter1.txtFillter = PersonID.ToString();
             ctrlFindWithFilter1.ComboBox = 1;
 
@@ -118,19 +159,23 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             if (CheckIfApplicationIsExist())
                 return;
-          
-           
-            LocalApplication.ApplicationPersonID = Person.PersonID;
-            LocalApplication.ApplicationDate = DateTime.Now;
-            LocalApplication.CreatedByUserID = GlobalSetting.CurrentUser.UserId;
 
-            LocalApplication.ApplicationStatus = (int)Status;
-            LocalApplication.LastStatusDate = DateTime.Now;
-            LocalApplication.PaidFees = clsLocalDrivingLicenseApplication.GetPaidFeesForLocalDrivingLicense();
+            if (_FormMode == enMode.enAddnew)
+            {
+                LocalApplication.ApplicationPersonID = Person.PersonID;
+                LocalApplication.ApplicationDate = DateTime.Now;
+                LocalApplication.CreatedByUserID = GlobalSetting.CurrentUser.UserId;
 
-            LocalApplication.LicenseClassID = (int)cbLicenseClass.SelectedIndex + 1;
+                LocalApplication.ApplicationStatus = (int)Status;
+                LocalApplication.LastStatusDate = DateTime.Now;
+                LocalApplication.PaidFees = clsLocalDrivingLicenseApplication.GetPaidFeesForLocalDrivingLicense();
+                LocalApplication.LicenseClassID = (int)cbLicenseClass.SelectedIndex + 1;
+            }
 
-
+            else
+            {
+                LocalApplication.LicenseClassID = (int)cbLicenseClass.SelectedIndex + 1;
+            }
 
             if (LocalApplication.Save())
             {

@@ -37,6 +37,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             txtFilterby.Visible = false;
             comboBox1.SelectedIndex = 0;
+           
         }
 
         void LoadLocalDrivingLicenseApplication()
@@ -137,6 +138,64 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 txtFilterby.Text = string.Empty;
                 txtFilterby.Text = oldFilterText;
             }
+        }
+
+       
+        private void TsmiShowAppDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TsmiEditApp_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            Form EditLocalDrivingLicenseApp = new LocalDrivingLicenseApplicationForm(LocalDrivingLicenseApplicationID);
+            if (EditLocalDrivingLicenseApp.ShowDialog() == DialogResult.OK)
+            {
+                LoadLocalDrivingLicenseApplication();
+                string oldFilterText = txtFilterby.Text;
+                txtFilterby.Text = string.Empty;
+                txtFilterby.Text = oldFilterText;
+            }
+
+        }
+
+        private void TsmiDeleteApp_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingApplicationID = -1;          
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                LocalDrivingApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);              
+            }
+
+            if (MessageBox.Show("Are You Sure ?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (clsLocalDrivingLicenseApplication.Delete(LocalDrivingApplicationID))
+                {
+                    MessageBox.Show("Recorde Deleted Successfully", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    LoadLocalDrivingLicenseApplication();
+                }
+                else
+                    MessageBox.Show("Recorde Deleted Failed", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }           
+        }
+
+        private void TsmiCancelApp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TsmiSechduleVisionTest_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            Form VisionTest = new TestsForms.TestForm(LocalDrivingLicenseApplicationID);
+            VisionTest.Show();
         }
     }
 }

@@ -320,5 +320,35 @@ namespace DVLD_DataAccessLayer
                 Console.WriteLine("حدث خطأ أثناء مسح محتوى الملف: " + ex.Message);
             }
         }
+
+        static public string GetUserNameByUserId(int UserID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "Select UserName From Users Where UserID = @UserID";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+            string UserName = "";
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    UserName = (string)reader["UserName"];                                     
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return UserName;
+        }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="clsManagePeopleData.cs" />
     <Compile Include="clsManageTestTypesData.cs" />
     <Compile Include="clsManageUsersData.cs" />
+    <Compile Include="clsTestAppointmentsData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

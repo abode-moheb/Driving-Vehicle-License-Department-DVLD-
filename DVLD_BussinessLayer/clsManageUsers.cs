@@ -132,5 +132,10 @@ namespace DVLD_BussinessLayer
         {
             clsManageUsersData.ClearlastLoginFile();
         }
+
+        static public string GetUserNameByUserId(int UserID)
+        {
+           return clsManageUsersData.GetUserNameByUserId(UserID);
+        }
     }
 }

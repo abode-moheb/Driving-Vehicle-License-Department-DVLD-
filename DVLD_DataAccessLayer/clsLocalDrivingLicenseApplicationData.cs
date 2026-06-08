@@ -196,8 +196,145 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        // Manage Local dirving Application Form
+        static public bool Find(int LocalDrivingLicenseAppID, ref int ApplicationID, ref int ApplicationPersonID, ref DateTime ApplicationDate, ref int ApplicationType,
+                 ref int ApplicationStatus, ref DateTime LastStatusDate, ref int PaidFees, ref int CreatedByUserID, ref int LicenseClassID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT        Applications.ApplicationID, Applications.ApplicantPersonID, Applications.ApplicationDate, Applications.ApplicationTypeID, Applications.ApplicationStatus, Applications.LastStatusDate, Applications.PaidFees, 
+                         Applications.CreatedByUserID, LocalDrivingLicenseApplications.LicenseClassID
+                            FROM            Applications INNER JOIN
+                         LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+						 where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseAppID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseAppID", LocalDrivingLicenseAppID);
 
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    ApplicationID = Convert.ToInt32(reader["ApplicationID"]);
+                    ApplicationPersonID = Convert.ToInt32(reader["ApplicantPersonID"]);
+                    ApplicationDate = Convert.ToDateTime(reader["ApplicationDate"]);
+
+                    ApplicationType = Convert.ToInt32(reader["ApplicationTypeID"]);
+                    ApplicationStatus = Convert.ToInt32(reader["ApplicationStatus"]);
+                    LastStatusDate = Convert.ToDateTime(reader["LastStatusDate"]);
+
+                    PaidFees = Convert.ToInt32(reader["PaidFees"]);
+                    CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
+                    LicenseClassID = Convert.ToInt32(reader["LicenseClassID"]);
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        static public bool UpdateLocalApplication(int LocalDrivingLicenseAppID, int LicenseClassID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"update LocalDrivingLicenseApplications set LicenseClassID = @LicenseClassID
+                            where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseAppID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseAppID", LocalDrivingLicenseAppID);
+
+            int RowsAffected = 0;
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return (RowsAffected > 0);
+        }
+
+        static public int GetApplicationIDFromLocalDrivingLicenseApp(int localDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select * from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
+
+            int ApplicationID = -1;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ApplicationID = Convert.ToInt32(reader["ApplicationID"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return ApplicationID;
+        }
+
+        static public bool DeleteRecords(int localDrivingLicenseApplicationID, int ApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID
+                              delete from Applications where ApplicationID = @ApplicationID";                            
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            int RowsAffected = 0;
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return (RowsAffected > 1);
+        }
+
+        // Manage Local dirving Application Form
         static public DataTable GetLocalDrivingLicenseApplicationTable()
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

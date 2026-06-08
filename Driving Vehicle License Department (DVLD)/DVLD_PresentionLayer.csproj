@@ -64,6 +64,12 @@
     <Compile Include="ChangeUserPasswordForm.Designer.cs">
       <DependentUpon>ChangeUserPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlDrivingLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlFindWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +155,12 @@
     <Compile Include="ShowUserDetailsForm.Designer.cs">
       <DependentUpon>ShowUserDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestsForms\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestsForms\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateApplicationTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeUserPasswordForm.resx">
       <DependentUpon>ChangeUserPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlFindWithFilter.resx">
       <DependentUpon>ctrlFindWithFilter.cs</DependentUpon>
@@ -213,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowUserDetailsForm.resx">
       <DependentUpon>ShowUserDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestsForms\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateApplicationTypeForm.resx">
       <DependentUpon>UpdateApplicationTypeForm.cs</DependentUpon>
@@ -421,6 +439,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\New Application 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete 32 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TestType 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IssueDrivingLicense 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PersonLicenseHistory 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vision Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Written Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Street Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vision 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PassedTests 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\License View 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ApplicationType.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddAppointment 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
