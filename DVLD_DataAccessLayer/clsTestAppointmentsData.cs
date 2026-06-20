@@ -67,7 +67,7 @@ namespace DVLD_DataAccessLayer
         static public DataTable GetAppBasicInfo(int LocalDrivingLicenseApplicationID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"SELECT        Applications.ApplicationID, People.FirstName + ' ' + People.SecondName + ' ' + ISNULL(People.ThirdName, '') + ' ' + People.LastName AS FullName, 
+            string query = @"SELECT        Applications.ApplicationID, ApplicantPersonID, People.FirstName + ' ' + People.SecondName + ' ' + ISNULL(People.ThirdName, '') + ' ' + People.LastName AS FullName, 
                          CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Canceled' WHEN Applications.ApplicationStatus = 3 THEN 'Complete' ELSE 'Unkown' END AS ApplicationStatus, 
                          Applications.PaidFees, ApplicationTypes.ApplicationTypeTitle, Applications.ApplicationDate, Applications.LastStatusDate, Users.UserName
                          FROM            Applications INNER JOIN
@@ -102,7 +102,109 @@ namespace DVLD_DataAccessLayer
             return dataTable;
         }
 
+        static public DataTable GetApplicationAppointments(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select TestAppointmentID,AppointmentDate,PaidFees,IsLocked from TestAppointments
+                            where TestTypeID = @TestTypeID And LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable;
+        }
+
+        static public bool CheckIfHadActiveAppoientment(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select * from TestAppointments where (LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) And (IsLocked = 0) And (TestTypeID = @TestTypeID)";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+           
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+
+        }
+
+        static public bool CheckIfTestPassed(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"IF EXISTS
+                            (
+                                SELECT 1
+                                FROM Tests
+                                WHERE TestResult = 1
+                                AND TestAppointmentID IN
+                                (
+                                    SELECT TestAppointmentID
+                                    FROM TestAppointments
+                                    WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                    AND TestTypeID = @TestTypeID
+                                )
+                            )
+                                SELECT 1
+                            ELSE
+                                SELECT 0";
+            SqlCommand command = new SqlCommand(query, connection);
+            
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            bool PassedBefore = false;
+            try
+            {
+                connection.Open();
+                
+                object result = command.ExecuteScalar();
+                PassedBefore = ((int)result == 1);
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return PassedBefore;
+        }
 
     }
 }

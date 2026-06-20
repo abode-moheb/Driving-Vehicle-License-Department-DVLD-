@@ -18,6 +18,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
             InitializeComponent();
         }
 
+        int _ApplicantPersonID = -1;
         public int DrivingLicenseAppID
         {
             set { lblDrivingLicenseAppID.Text = value.ToString(); }           
@@ -25,14 +26,22 @@ namespace Driving_Vehicle_License_Department__DVLD_
         public string LicenseClass
         {
             set { lblAppliedForLicense.Text = value; }
+            get { return lblAppliedForLicense.Text; }
         }
         public int PassedTests
         {
-            set { lblPassedTests.Text = value.ToString(); }
+            set { lblPassedTests.Text = value.ToString() + "/" + "3"; }
         }
         public int ApplicationID
         {
             set { lblAppID.Text = value.ToString(); }
+            get { return Convert.ToInt32(lblAppID.Text); }
+        }
+
+        public int ApplicantPersonID
+        {
+            set { _ApplicantPersonID = value; }
+            get { return _ApplicantPersonID; }
         }
         public string AppStatus
         {
@@ -41,6 +50,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
         public int AppFees
         {
             set { lblFees.Text = value.ToString(); }
+            get { return Convert.ToInt32(lblFees.Text); }
         }
         public string AppType
         {
@@ -80,6 +90,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
             PassedTests = testAppointemtsDTO.PassedTests;
 
             ApplicationID = testAppointemtsDTO.ApplicationID;
+            ApplicantPersonID = testAppointemtsDTO.ApplicantPersonID;
             AppStatus = testAppointemtsDTO.AppStatus;
             AppFees = testAppointemtsDTO.AppFees;
 
@@ -93,7 +104,9 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         private void LinkLabelViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           
+            Form ShowPersonDetails = new ShowPersonDetailsForm(_ApplicantPersonID);
+            ShowPersonDetails.Show();
+             
         }
     }
 }

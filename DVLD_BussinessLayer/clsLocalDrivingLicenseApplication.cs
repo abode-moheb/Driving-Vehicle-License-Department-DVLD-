@@ -136,5 +136,20 @@ namespace DVLD_BussinessLayer
         {
             return clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationTable();
         }
-    }
+
+        static public bool ChangeApplicationStatusToComplete(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationData.ChangeApplicationStatusToComplete(LocalDrivingLicenseApplicationID);
+        }
+
+        static public bool CheckIfPassedTestComplete(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationData.CheckIfPassedTestComplete(LocalDrivingLicenseApplicationID);
+        }
+
+        static public bool ChangeApplicationStatusToCanceled(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationData.ChangeApplicationStatusToCanceled(LocalDrivingLicenseApplicationID);
+        }
+}
 }

@@ -35,6 +35,7 @@ namespace DVLD_BussinessLayer
                 return;
 
             testAppointemtsDTO.ApplicationID = Convert.ToInt32(dataTable.Rows[0]["ApplicationID"]);
+            testAppointemtsDTO.ApplicantPersonID = Convert.ToInt32(dataTable.Rows[0]["ApplicantPersonID"]);
             testAppointemtsDTO.AppStatus = dataTable.Rows[0]["ApplicationStatus"].ToString(); ;
             testAppointemtsDTO.AppFees = Convert.ToInt32(dataTable.Rows[0]["PaidFees"]);
 
@@ -56,6 +57,21 @@ namespace DVLD_BussinessLayer
             GetAppBasicInfo(LocalDrivingLicenseApplicationID, testAppointemtsDTO);
 
             return testAppointemtsDTO;
+        }
+
+        static public DataTable GetApplicationAppointments(int LocalDrivingLicenseApplicationID,int TestTypeID)
+        {
+            return clsTestAppointmentsData.GetApplicationAppointments(LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+        static public bool CheckIfHadActiveAppoientment(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            return clsTestAppointmentsData.CheckIfHadActiveAppoientment(LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+        static public bool CheckIfTestPassed(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            return clsTestAppointmentsData.CheckIfTestPassed(LocalDrivingLicenseApplicationID, TestTypeID);
         }
 
     }

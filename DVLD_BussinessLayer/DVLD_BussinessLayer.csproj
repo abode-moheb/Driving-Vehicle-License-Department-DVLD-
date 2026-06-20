@@ -41,11 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsIssueDriverLicenseFirstTime.cs" />
     <Compile Include="clsLocalDrivingLicenseApplication.cs" />
     <Compile Include="clsManageApplicationsTypes.cs" />
     <Compile Include="clsManagePeople.cs" />
     <Compile Include="clsManageTestTypes.cs" />
     <Compile Include="clsManageUsers.cs" />
+    <Compile Include="clsScheulingTest.cs" />
+    <Compile Include="clsTakeTest.cs" />
     <Compile Include="clsTestAppointemtsDTO.cs" />
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="GlobalSetting.cs" />

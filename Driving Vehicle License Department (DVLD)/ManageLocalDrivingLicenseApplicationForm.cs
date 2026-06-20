@@ -37,7 +37,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             txtFilterby.Visible = false;
             comboBox1.SelectedIndex = 0;
-           
+            tsmiShowLicense.Enabled = false;
         }
 
         void LoadLocalDrivingLicenseApplication()
@@ -50,26 +50,29 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
             lblRecordeNumber.Text = dataGridView1.Rows.Count.ToString();
 
-            dataGridView1.Columns[0].HeaderText = "L.D.LAppID";
-            dataGridView1.Columns[0].Width = 75;
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns[0].HeaderText = "L.D.LAppID";
+                dataGridView1.Columns[0].Width = 75;
 
-            dataGridView1.Columns[1].HeaderText = "Driving Class";
-            dataGridView1.Columns[1].Width = 175;
+                dataGridView1.Columns[1].HeaderText = "Driving Class";
+                dataGridView1.Columns[1].Width = 175;
 
-            dataGridView1.Columns[2].HeaderText = "National No";
-            dataGridView1.Columns[2].Width = 75;
+                dataGridView1.Columns[2].HeaderText = "National No";
+                dataGridView1.Columns[2].Width = 75;
 
-            dataGridView1.Columns[3].HeaderText = "Full Name";
-            dataGridView1.Columns[3].Width = 175;
+                dataGridView1.Columns[3].HeaderText = "Full Name";
+                dataGridView1.Columns[3].Width = 175;
 
-            dataGridView1.Columns[4].HeaderText = "Application Date";
-            dataGridView1.Columns[4].Width = 150;
+                dataGridView1.Columns[4].HeaderText = "Application Date";
+                dataGridView1.Columns[4].Width = 150;
 
-            dataGridView1.Columns[5].HeaderText = "Passed Test";
-            dataGridView1.Columns[5].Width = 75;
+                dataGridView1.Columns[5].HeaderText = "Passed Test";
+                dataGridView1.Columns[5].Width = 75;
 
-            dataGridView1.Columns[6].HeaderText = "Status";
-            dataGridView1.Columns[6].Width = 100;
+                dataGridView1.Columns[6].HeaderText = "Status";
+                dataGridView1.Columns[6].Width = 100;
+            }
         }
 
         void ApplyFillter()
@@ -139,7 +142,6 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 txtFilterby.Text = oldFilterText;
             }
         }
-
        
         private void TsmiShowAppDetails_Click(object sender, EventArgs e)
         {
@@ -171,21 +173,41 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 LocalDrivingApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);              
             }
 
+          
+
             if (MessageBox.Show("Are You Sure ?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (clsLocalDrivingLicenseApplication.Delete(LocalDrivingApplicationID))
+                string Status = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+                if (Status == "New")
                 {
-                    MessageBox.Show("Recorde Deleted Successfully", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    LoadLocalDrivingLicenseApplication();
+                    if (clsLocalDrivingLicenseApplication.Delete(LocalDrivingApplicationID))
+                    {
+                        MessageBox.Show("Recorde Deleted Successfully", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        LoadLocalDrivingLicenseApplication();
+                    }
+                    else
+                        MessageBox.Show("Recorde Deleted Failed", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("Recorde Deleted Failed", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    MessageBox.Show("you cant delete recorde with this status ", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }           
         }
 
         private void TsmiCancelApp_Click(object sender, EventArgs e)
         {
+            int LocalDrivingLicenseApplicationID = -1;
+          
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
+            DialogResult Result = MessageBox.Show("Are you sure ? ", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (Result == DialogResult.OK)
+            {
+                if (clsLocalDrivingLicenseApplication.ChangeApplicationStatusToCanceled(LocalDrivingLicenseApplicationID))
+                    LoadLocalDrivingLicenseApplication();
+            }
         }
 
         private void TsmiSechduleVisionTest_Click(object sender, EventArgs e)
@@ -194,8 +216,131 @@ namespace Driving_Vehicle_License_Department__DVLD_
             if (dataGridView1.SelectedRows.Count > 0)
                 LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
-            Form VisionTest = new TestsForms.TestForm(LocalDrivingLicenseApplicationID);
-            VisionTest.Show();
+            Form VisionTest = new TestsForms.TestAppointmentsForm(LocalDrivingLicenseApplicationID, 1);
+            if (VisionTest.ShowDialog() == DialogResult.Cancel)
+                LoadLocalDrivingLicenseApplication();
+        }
+       
+        private void TsmiSechduleWrittenTest_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            Form WrittenTest = new TestsForms.TestAppointmentsForm(LocalDrivingLicenseApplicationID, 2);
+            if (WrittenTest.ShowDialog() == DialogResult.Cancel)
+                LoadLocalDrivingLicenseApplication();
+        }
+
+        private void TsmiSechduleStreetTest_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = -1;           
+
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            Form SreetTest = new TestsForms.TestAppointmentsForm(LocalDrivingLicenseApplicationID, 3);
+            if (SreetTest.ShowDialog() == DialogResult.Cancel)
+            {
+                 LoadLocalDrivingLicenseApplication();                
+            }
+        }
+      
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {           
+            tsmiEditApp.Enabled = true;
+            tsmiCancelApp.Enabled = true;
+            tsmiDeleteApp.Enabled = false;
+
+            tsmiSechduleTests.Enabled = true;
+
+            tsmiSechduleVisionTest.Enabled = false;
+            tsmiSechduleWrittenTest.Enabled = false;
+            tsmiSechduleStreetTest.Enabled = false;
+
+            tsmiShowLicense.Enabled = false;
+            tsmiIssueDrivingLicense.Enabled = false;
+
+
+            string Status = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            if (Status == "New")
+            {
+                tsmiDeleteApp.Enabled = true;
+            }
+
+            if (Status == "Cancelled")
+            {
+                tsmiEditApp.Enabled = false;
+                tsmiCancelApp.Enabled = false;
+                tsmiDeleteApp.Enabled = false;
+                tsmiSechduleTests.Enabled = false;
+                tsmiIssueDrivingLicense.Enabled = false;                
+                return;
+            }
+                    
+            if (Status == "Completed") {
+
+                tsmiEditApp.Enabled = false;
+                tsmiCancelApp.Enabled = false;
+                tsmiDeleteApp.Enabled = false;
+                tsmiSechduleTests.Enabled = false;
+                tsmiIssueDrivingLicense.Enabled = false;
+
+                tsmiShowLicense.Enabled = true;
+                return;
+            }
+
+
+            int PassedTest = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[5].Value);
+
+
+            switch (PassedTest)
+            {                
+                case 0:
+                    tsmiSechduleVisionTest.Enabled = true;
+                    break;
+
+                
+                case 1:
+                    tsmiSechduleWrittenTest.Enabled = true;
+                    break;
+
+               
+                case 2:
+                    tsmiSechduleStreetTest.Enabled = true;
+                    break;
+
+                
+                case 3:
+                    tsmiIssueDrivingLicense.Enabled = true;
+                    tsmiSechduleTests.Enabled = false;
+                    break;
+            }
+        }
+
+        private void TsmiIssueDrivingLicense_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = -1;
+
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            Form IssueLicense = new IssueDriverLicenseFirstTime(LocalDrivingLicenseApplicationID);
+            if(IssueLicense.ShowDialog() == DialogResult.OK)
+            {
+                clsLocalDrivingLicenseApplication.ChangeApplicationStatusToComplete(LocalDrivingLicenseApplicationID);
+                LoadLocalDrivingLicenseApplication();
+            }
+        }
+
+        private void TsmiShowLicense_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,6 +12,7 @@ namespace DVLD_BussinessLayer
         public string LicenseClass { set; get; }
         public int PassedTests { set; get; }
         public int ApplicationID { set; get; }
+        public int ApplicantPersonID { set; get; }
         public string AppStatus { set; get; }
         public int AppFees { set; get; }
         public string AppType { set; get; }

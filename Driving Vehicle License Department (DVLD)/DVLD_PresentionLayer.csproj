@@ -82,6 +82,12 @@
     <Compile Include="ctrlShowPersonDetails.Designer.cs">
       <DependentUpon>ctrlShowPersonDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="IssueDriverLicenseFirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueDriverLicenseFirstTime.Designer.cs">
+      <DependentUpon>IssueDriverLicenseFirstTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocalDrivingLicenseApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,11 +161,23 @@
     <Compile Include="ShowUserDetailsForm.Designer.cs">
       <DependentUpon>ShowUserDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestsForms\TestForm.cs">
+    <Compile Include="TestsForms\SchedulingTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestsForms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <Compile Include="TestsForms\SchedulingTestForm.Designer.cs">
+      <DependentUpon>SchedulingTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestsForms\TakeTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestsForms\TakeTestForm.Designer.cs">
+      <DependentUpon>TakeTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestsForms\TestAppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestsForms\TestAppointmentsForm.Designer.cs">
+      <DependentUpon>TestAppointmentsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateApplicationTypeForm.cs">
       <SubType>Form</SubType>
@@ -190,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlShowPersonDetails.resx">
       <DependentUpon>ctrlShowPersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDriverLicenseFirstTime.resx">
+      <DependentUpon>IssueDriverLicenseFirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalDrivingLicenseApplicationForm.resx">
       <DependentUpon>LocalDrivingLicenseApplicationForm.cs</DependentUpon>
@@ -229,8 +250,14 @@
     <EmbeddedResource Include="ShowUserDetailsForm.resx">
       <DependentUpon>ShowUserDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestsForms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <EmbeddedResource Include="TestsForms\SchedulingTestForm.resx">
+      <DependentUpon>SchedulingTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestsForms\TakeTestForm.resx">
+      <DependentUpon>TakeTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestsForms\TestAppointmentsForm.resx">
+      <DependentUpon>TestAppointmentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateApplicationTypeForm.resx">
       <DependentUpon>UpdateApplicationTypeForm.cs</DependentUpon>
@@ -475,6 +502,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddAppointment 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Count 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notes 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Written Test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\driving-test 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

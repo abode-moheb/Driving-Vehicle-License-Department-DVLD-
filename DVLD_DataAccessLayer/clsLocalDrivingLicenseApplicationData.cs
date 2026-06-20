@@ -308,7 +308,10 @@ namespace DVLD_DataAccessLayer
         static public bool DeleteRecords(int localDrivingLicenseApplicationID, int ApplicationID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID
+            string query = @"delete from Tests where Tests.TestAppointmentID in (
+                            select Tests.TestAppointmentID from TestAppointments where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID)
+                            delete from TestAppointments where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID
+                            delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID
                               delete from Applications where ApplicationID = @ApplicationID";                            
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -364,6 +367,96 @@ namespace DVLD_DataAccessLayer
                 connection.Close();
             }
             return dataTable;
+        }
+
+        static public bool ChangeApplicationStatusToComplete(int LocalDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"Update Applications set ApplicationStatus = 3 where ApplicationID in (
+                        select ApplicationID from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            int RowsAffected = 0;
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return (RowsAffected > 0);
+        }
+
+        static public bool CheckIfPassedTestComplete(int LocalDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @" SELECT        COUNT(*) AS PassedTest
+                         FROM            Tests INNER JOIN
+                         TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID INNER JOIN
+                         LocalDrivingLicenseApplications ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+                         WHERE        (TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) 
+                            AND (Tests.TestResult = 1) And (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            int PassedTest = 0;
+            try
+            {
+                connection.Open();
+                object Result = command.ExecuteScalar();
+
+                if (Result != null && int.TryParse(Result.ToString(), out int Passed))
+                    PassedTest = Passed;
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return (PassedTest == 3);
+        }
+
+        static public bool ChangeApplicationStatusToCanceled(int LocalDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"update Applications set ApplicationStatus = 2 where ApplicationID in (
+                    select ApplicationID from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID )";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            int RowsAffected = 0;
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+            return (RowsAffected > 0);
         }
 
     }

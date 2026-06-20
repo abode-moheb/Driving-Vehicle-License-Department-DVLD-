@@ -139,6 +139,7 @@
             this.tsmiShowPersonLicenseHistory});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(259, 360);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
             // 
             // tsmiShowAppDetails
             // 
@@ -214,6 +215,7 @@
             this.tsmiSechduleWrittenTest.Name = "tsmiSechduleWrittenTest";
             this.tsmiSechduleWrittenTest.Size = new System.Drawing.Size(203, 38);
             this.tsmiSechduleWrittenTest.Text = "Sechdule Written Test";
+            this.tsmiSechduleWrittenTest.Click += new System.EventHandler(this.TsmiSechduleWrittenTest_Click);
             // 
             // tsmiSechduleStreetTest
             // 
@@ -222,6 +224,7 @@
             this.tsmiSechduleStreetTest.Name = "tsmiSechduleStreetTest";
             this.tsmiSechduleStreetTest.Size = new System.Drawing.Size(203, 38);
             this.tsmiSechduleStreetTest.Text = "Sechdule Street Test";
+            this.tsmiSechduleStreetTest.Click += new System.EventHandler(this.TsmiSechduleStreetTest_Click);
             // 
             // toolStripSeparator2
             // 
@@ -235,6 +238,7 @@
             this.tsmiIssueDrivingLicense.Name = "tsmiIssueDrivingLicense";
             this.tsmiIssueDrivingLicense.Size = new System.Drawing.Size(258, 38);
             this.tsmiIssueDrivingLicense.Text = "Issue Driving License(First Time)";
+            this.tsmiIssueDrivingLicense.Click += new System.EventHandler(this.TsmiIssueDrivingLicense_Click);
             // 
             // toolStripSeparator3
             // 
@@ -248,6 +252,7 @@
             this.tsmiShowLicense.Name = "tsmiShowLicense";
             this.tsmiShowLicense.Size = new System.Drawing.Size(258, 38);
             this.tsmiShowLicense.Text = "Show License";
+            this.tsmiShowLicense.Click += new System.EventHandler(this.TsmiShowLicense_Click);
             // 
             // toolStripSeparator4
             // 
@@ -336,6 +341,7 @@
             this.btnClose.TabIndex = 30;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnAdd
             // 
