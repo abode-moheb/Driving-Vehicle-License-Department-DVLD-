@@ -145,7 +145,12 @@ namespace Driving_Vehicle_License_Department__DVLD_
        
         private void TsmiShowAppDetails_Click(object sender, EventArgs e)
         {
+            int LocalDrivingLicenseApplicationID = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
+            Form ApplicationDetails = new ShowApplicationDetailsForm(LocalDrivingLicenseApplicationID);
+            ApplicationDetails.Show();
         }
 
         private void TsmiEditApp_Click(object sender, EventArgs e)
@@ -340,7 +345,24 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         private void TsmiShowLicense_Click(object sender, EventArgs e)
         {
+            int LocalDrivingLicenseApplicationID = -1;
 
+            if (dataGridView1.SelectedRows.Count > 0)
+                LocalDrivingLicenseApplicationID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+            Form LicenseInfo = new LicenseInfoForm(LocalDrivingLicenseApplicationID);
+            LicenseInfo.Show();
+        }
+
+        private void TsmiShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            string NationalNo = "";
+
+            if (dataGridView1.SelectedRows.Count > 0)
+                NationalNo = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+
+            Form LicenseHistory = new LicenseHistoryForm(NationalNo);
+            LicenseHistory.Show();
         }
     }
 }

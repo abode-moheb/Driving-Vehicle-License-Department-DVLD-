@@ -45,7 +45,7 @@
             this.tsmiManageApplicationTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.pepoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.drivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DriversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCurrentUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +60,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.applicationToolStripMenuItem,
             this.pepoleToolStripMenuItem,
-            this.drivesToolStripMenuItem,
+            this.DriversToolStripMenuItem,
             this.usersToolStripMenuItem,
             this.accountSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -230,15 +230,16 @@
             this.pepoleToolStripMenuItem.Text = "People";
             this.pepoleToolStripMenuItem.Click += new System.EventHandler(this.PepoleToolStripMenuItem_Click);
             // 
-            // drivesToolStripMenuItem
+            // DriversToolStripMenuItem
             // 
-            this.drivesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drivesToolStripMenuItem.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Drivers_64;
-            this.drivesToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.drivesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.drivesToolStripMenuItem.Name = "drivesToolStripMenuItem";
-            this.drivesToolStripMenuItem.Size = new System.Drawing.Size(173, 68);
-            this.drivesToolStripMenuItem.Text = "Drivers";
+            this.DriversToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriversToolStripMenuItem.Image = global::Driving_Vehicle_License_Department__DVLD_.Properties.Resources.Drivers_64;
+            this.DriversToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DriversToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.DriversToolStripMenuItem.Name = "DriversToolStripMenuItem";
+            this.DriversToolStripMenuItem.Size = new System.Drawing.Size(173, 68);
+            this.DriversToolStripMenuItem.Text = "Drivers";
+            this.DriversToolStripMenuItem.Click += new System.EventHandler(this.DriversToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
@@ -318,7 +319,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem applicationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pepoleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem drivesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DriversToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;

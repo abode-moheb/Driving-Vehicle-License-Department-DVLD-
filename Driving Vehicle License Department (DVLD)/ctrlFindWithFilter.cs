@@ -82,5 +82,10 @@ namespace Driving_Vehicle_License_Department__DVLD_
         {
 
         }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

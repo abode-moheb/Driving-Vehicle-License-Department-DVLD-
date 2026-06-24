@@ -14,12 +14,33 @@ namespace DVLD_DataAccessLayer
 
         static public int AddDriver(SqlConnection connection, SqlTransaction transaction, int ApplicantPersonID, int CreatedByUserID, DateTime CreatedDate)
         {
-            string query = @"INSERT INTO Drivers 
-                    (PersonID, CreatedByUserID, CreatedDate)
-                    VALUES
-                    (@ApplicantPersonID, @CreatedByUserID, @CreatedDate);
-
-                    SELECT SCOPE_IDENTITY();";
+            string query = @"IF NOT EXISTS (
+                            SELECT DriverID 
+                            FROM Drivers 
+                            WHERE PersonID = @ApplicantPersonID
+                        )
+                        BEGIN
+                            INSERT INTO Drivers 
+                            (
+                                PersonID, 
+                                CreatedByUserID, 
+                                CreatedDate
+                            )
+                            VALUES
+                            (
+                                @ApplicantPersonID, 
+                                @CreatedByUserID, 
+                                @CreatedDate
+                            );
+                        
+                            SELECT SCOPE_IDENTITY() AS DriverID;
+                        END
+                        ELSE
+                        BEGIN
+                            SELECT DriverID 
+                            FROM Drivers 
+                            WHERE PersonID = @ApplicantPersonID;
+                        END";
 
 
               SqlCommand command = new SqlCommand(query, connection, transaction);

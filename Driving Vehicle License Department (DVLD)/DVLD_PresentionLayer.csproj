@@ -64,6 +64,12 @@
     <Compile Include="ChangeUserPasswordForm.Designer.cs">
       <DependentUpon>ChangeUserPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlDriverLicseneInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverLicseneInfo.Designer.cs">
+      <DependentUpon>ctrlDriverLicseneInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlDrivingLicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,24 @@
     </Compile>
     <Compile Include="IssueDriverLicenseFirstTime.Designer.cs">
       <DependentUpon>IssueDriverLicenseFirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LicenseHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseHistoryForm.Designer.cs">
+      <DependentUpon>LicenseHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LicenseInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseInfoForm.Designer.cs">
+      <DependentUpon>LicenseInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListDriversForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListDriversForm.Designer.cs">
+      <DependentUpon>ListDriversForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalDrivingLicenseApplicationForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +173,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ShowApplicationDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowApplicationDetailsForm.Designer.cs">
+      <DependentUpon>ShowApplicationDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowPersonDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +230,9 @@
     <EmbeddedResource Include="ChangeUserPasswordForm.resx">
       <DependentUpon>ChangeUserPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverLicseneInfo.resx">
+      <DependentUpon>ctrlDriverLicseneInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +244,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDriverLicenseFirstTime.resx">
       <DependentUpon>IssueDriverLicenseFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseHistoryForm.resx">
+      <DependentUpon>LicenseHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseInfoForm.resx">
+      <DependentUpon>LicenseInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListDriversForm.resx">
+      <DependentUpon>ListDriversForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalDrivingLicenseApplicationForm.resx">
       <DependentUpon>LocalDrivingLicenseApplicationForm.cs</DependentUpon>
@@ -243,6 +285,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowApplicationDetailsForm.resx">
+      <DependentUpon>ShowApplicationDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonDetailsForm.resx">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
@@ -517,6 +562,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\driving-test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LicenseView 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PersonLicenseHistory 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\367d28a06049116cd26db16b8785dc31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4d04101f18b714f5f1f9c94b8a69ad84.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

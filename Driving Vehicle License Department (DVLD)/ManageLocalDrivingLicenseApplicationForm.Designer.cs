@@ -266,6 +266,7 @@
             this.tsmiShowPersonLicenseHistory.Name = "tsmiShowPersonLicenseHistory";
             this.tsmiShowPersonLicenseHistory.Size = new System.Drawing.Size(258, 38);
             this.tsmiShowPersonLicenseHistory.Text = "Person License History";
+            this.tsmiShowPersonLicenseHistory.Click += new System.EventHandler(this.TsmiShowPersonLicenseHistory_Click);
             // 
             // dataGridView1
             // 

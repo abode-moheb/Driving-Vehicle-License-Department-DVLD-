@@ -78,5 +78,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form ManageLocalDrivingLicenseApplication = new ManageLocalDrivingLicenseApplicationForm();
             ManageLocalDrivingLicenseApplication.Show();
         }
+
+        private void DriversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form ListDrivers = new ListDriversForm();
+            ListDrivers.Show();
+        }
     }
 }

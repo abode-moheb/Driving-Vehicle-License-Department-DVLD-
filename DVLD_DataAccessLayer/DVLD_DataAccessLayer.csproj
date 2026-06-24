@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsDataAccessSettings.cs" />
+    <Compile Include="clsLicenseHistoryData.cs" />
+    <Compile Include="clsLicenseInfoData.cs" />
+    <Compile Include="clsListDriversData.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicationData.cs" />
     <Compile Include="clsManageApplicationsTypesData.cs" />
     <Compile Include="clsManagePeopleData.cs" />
