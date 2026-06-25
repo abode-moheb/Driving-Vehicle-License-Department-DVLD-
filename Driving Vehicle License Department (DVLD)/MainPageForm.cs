@@ -84,5 +84,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form ListDrivers = new ListDriversForm();
             ListDrivers.Show();
         }
+
+        private void TsmiInternationalLicense_Click(object sender, EventArgs e)
+        {
+            Form AddNewInternationalLicense = new AddNewInternationalLicenseForm();
+            AddNewInternationalLicense.Show();
+        }
     }
 }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsInternationalLicense.cs" />
     <Compile Include="clsIssueDriverLicenseFirstTime.cs" />
     <Compile Include="clsLicenseHistory.cs" />
     <Compile Include="clsLicenseInfo.cs" />

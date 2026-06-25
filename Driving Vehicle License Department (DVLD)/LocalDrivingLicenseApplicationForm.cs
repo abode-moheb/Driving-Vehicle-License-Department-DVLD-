@@ -163,11 +163,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             if (_FormMode == enMode.enAddnew)
             {
                 LocalApplication.ApplicationPersonID = Person.PersonID;
-                LocalApplication.ApplicationDate = DateTime.Now;
+                LocalApplication.ApplicationDate = DateTime.Today;
                 LocalApplication.CreatedByUserID = GlobalSetting.CurrentUser.UserId;
 
                 LocalApplication.ApplicationStatus = (int)Status;
-                LocalApplication.LastStatusDate = DateTime.Now;
+                LocalApplication.LastStatusDate = DateTime.Today;
                 LocalApplication.PaidFees = clsLocalDrivingLicenseApplication.GetPaidFeesForLocalDrivingLicense();
                 LocalApplication.LicenseClassID = (int)cbLicenseClass.SelectedIndex + 1;
             }

@@ -48,11 +48,12 @@ namespace DVLD_DataAccessLayer
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT        Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
-                         FROM            Licenses INNER JOIN
+            string query = @"SELECT        InternationalLicenses.InternationalLicenseID, InternationalLicenses.ApplicationID, LicenseClasses.ClassName, InternationalLicenses.IssueDate, InternationalLicenses.ExpirationDate, InternationalLicenses.IsActive
+                            FROM            InternationalLicenses INNER JOIN
+                         Licenses ON InternationalLicenses.IssuedUsingLocalLicenseID = Licenses.LicenseID INNER JOIN
                          LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN
-                         Applications ON Licenses.ApplicationID = Applications.ApplicationID
-                         WHERE        (Applications.ApplicantPersonID = @PersonID) And (Applications.ApplicationTypeID = 6)
+                         Applications ON InternationalLicenses.ApplicationID = Applications.ApplicationID
+						 where (Applications.ApplicantPersonID = 1040) And (Applications.ApplicationTypeID = 6)
                             ";
 
             SqlCommand command = new SqlCommand(query, connection);

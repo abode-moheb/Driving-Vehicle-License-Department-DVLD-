@@ -104,10 +104,10 @@ namespace DVLD_BussinessLayer
         {
             int ApplicationID = -1;
             int ApplicationPersonID = -1;
-            DateTime ApplicationDate = DateTime.Now;
+            DateTime ApplicationDate = DateTime.Today;
             int ApplicationType = -1;
             int ApplicationStatus = -1;
-            DateTime LastStatusDate = DateTime.Now;
+            DateTime LastStatusDate = DateTime.Today;
             int PaidFees = -1;
             int CreatedByUserID = -1;
             int LicenseClassID = -1;
