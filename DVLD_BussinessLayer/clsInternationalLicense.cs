@@ -38,18 +38,27 @@ namespace DVLD_BussinessLayer
             return clsInternationalLicenseData.CheckIfInternationalLicesneIsExsist(LicenseID);
         }
 
-        public bool IssueInternationalLicense()
+        public bool Issue()
         {
             DateTime ApplicationDate = DateTime.Today;
             int ApplicationType = 6;
             int ApplicationStatus = 3;
-            DateTime LastStatuDate = DateTime.Today;           
-
-            InternationalLicenseID = clsInternationalLicenseData.Issue(this.PersonID,this.PaidFees, ApplicationDate, ApplicationType, ApplicationStatus, LastStatuDate, 
+            DateTime LastStatuDate = DateTime.Today;
+            int AppID = 0;
+            InternationalLicenseID = clsInternationalLicenseData.Issue(ref AppID, this.PersonID,this.PaidFees, ApplicationDate, ApplicationType, ApplicationStatus, LastStatuDate, 
                 this.DriverID, this.IssuedUsingLocalLicenseID, this.IssueDate, this.ExpirationDate,
                 this.IsActive, this.CreatedByUserID);
 
+            if (InternationalLicenseID != -1)
+                this.ApplicationID = AppID;
+
             return InternationalLicenseID != -1;
+        }
+
+        // ShowInternationalLicneseForm 
+        static public DataTable GetInternationalDriverInfo(int InternationalLicenseID)
+        {
+            return clsInternationalLicenseData.GetInternationalDriverInfo(InternationalLicenseID);
         }
     }
 }

@@ -168,7 +168,7 @@ namespace DVLD_DataAccessLayer
             return Convert.ToInt32(Result);
         }
 
-        static public int Issue(int PersonID, int PaidFees , DateTime ApplicationDate, int ApplicationType, int ApplicationStatus, DateTime LastStatuDate, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate,
+        static public int Issue(ref int ApplicationID, int PersonID, int PaidFees , DateTime ApplicationDate, int ApplicationType, int ApplicationStatus, DateTime LastStatuDate, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate,
                 int IsActive, int CreatedByUserID)
         {
             using(SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -178,7 +178,7 @@ namespace DVLD_DataAccessLayer
 
                 try
                 {
-                    int ApplicationID = AddNewApplicationforInternationalLicense(connection, transaction, PersonID, ApplicationDate, ApplicationType, ApplicationStatus, LastStatuDate, PaidFees, CreatedByUserID);
+                    ApplicationID = AddNewApplicationforInternationalLicense(connection, transaction, PersonID, ApplicationDate, ApplicationType, ApplicationStatus, LastStatuDate, PaidFees, CreatedByUserID);
                     if (ApplicationID == -1)
                     {
                         transaction.Rollback();
@@ -205,6 +205,46 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
+        }
+
+
+        // ShowInternationalLicneseForm 
+        static public DataTable GetInternationalDriverInfo(int InternationalLicenseID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT        CONCAT (People.FirstName, ' ' , People.SecondName, ' ' , People.ThirdName, ' ' , People.LastName) As FullName, InternationalLicenses.InternationalLicenseID, InternationalLicenses.IssuedUsingLocalLicenseID, People.NationalNo, Case 
+                            When People.Gendor = 0 Then 'Male'
+                            When People.Gendor = 1 Then 'Female'
+                            END As Gendor,
+                         InternationalLicenses.IssueDate, InternationalLicenses.IsActive, People.DateOfBirth, InternationalLicenses.DriverID, InternationalLicenses.ExpirationDate, Applications.ApplicationID
+                            FROM            People INNER JOIN
+                         Applications ON People.PersonID = Applications.ApplicantPersonID INNER JOIN
+                         InternationalLicenses ON Applications.ApplicationID = InternationalLicenses.ApplicationID
+						 where InternationalLicenses.InternationalLicenseID = @InternationalLicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@InternationalLicenseID", InternationalLicenseID);
+
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                string log = $"[{DateTime.Now}] {ex}\n";
+                File.AppendAllText("log.txt", log);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable;
         }
 
     }

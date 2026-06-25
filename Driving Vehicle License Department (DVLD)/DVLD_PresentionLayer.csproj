@@ -142,6 +142,12 @@
     <Compile Include="ManageApplicationTypeForm.Designer.cs">
       <DependentUpon>ManageApplicationTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageInternationalLicenseAppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageInternationalLicenseAppForm.Designer.cs">
+      <DependentUpon>ManageInternationalLicenseAppForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageLocalDrivingLicenseApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,12 @@
     </Compile>
     <Compile Include="ShowApplicationDetailsForm.Designer.cs">
       <DependentUpon>ShowApplicationDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowInternationalDriverInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowInternationalDriverInfoForm.Designer.cs">
+      <DependentUpon>ShowInternationalDriverInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowPersonDetailsForm.cs">
       <SubType>Form</SubType>
@@ -275,6 +287,9 @@
     <EmbeddedResource Include="ManageApplicationTypeForm.resx">
       <DependentUpon>ManageApplicationTypeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageInternationalLicenseAppForm.resx">
+      <DependentUpon>ManageInternationalLicenseAppForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageLocalDrivingLicenseApplicationForm.resx">
       <DependentUpon>ManageLocalDrivingLicenseApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowApplicationDetailsForm.resx">
       <DependentUpon>ShowApplicationDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowInternationalDriverInfoForm.resx">
+      <DependentUpon>ShowInternationalDriverInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonDetailsForm.resx">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
@@ -589,6 +607,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\International 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

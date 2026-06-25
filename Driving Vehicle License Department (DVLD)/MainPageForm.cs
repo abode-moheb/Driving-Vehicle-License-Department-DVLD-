@@ -90,5 +90,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
             Form AddNewInternationalLicense = new AddNewInternationalLicenseForm();
             AddNewInternationalLicense.Show();
         }
+
+        private void TsmiInternationalLicenseApplication_Click(object sender, EventArgs e)
+        {
+            Form ManageInternationalLicenseApp = new ManageInternationalLicenseAppForm();
+            ManageInternationalLicenseApp.Show();
+        }
     }
 }

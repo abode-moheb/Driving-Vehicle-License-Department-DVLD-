@@ -22,6 +22,14 @@ namespace Driving_Vehicle_License_Department__DVLD_
             GetPersonInternationalLicense();
         }
 
+        public LicenseHistoryForm(int PersonID)
+        {
+            InitializeComponent();
+            LoadPersonData(PersonID);
+            GetPersonLocalLicense();
+            GetPersonInternationalLicense();
+        }
+
         private void LicenseHistoryForm_Load(object sender, EventArgs e)
         {
             ctrlFindWithFilter1.txtFillter = Person.PersonID.ToString();
@@ -32,6 +40,12 @@ namespace Driving_Vehicle_License_Department__DVLD_
         {
             Person = clsManagePeople.FindPerson(NationalNo);           
             ctrlShowPersonDetails1.ShowPersonData(Person);          
+        }
+
+        void LoadPersonData(int PersonID)
+        {
+            Person = clsManagePeople.FindPerson(PersonID);
+            ctrlShowPersonDetails1.ShowPersonData(Person);
         }
 
         void GetPersonLocalLicense()

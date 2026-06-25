@@ -15,6 +15,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
     {
         clsLicenseInfoDTO licenseInfoDTO;
         int PaidFees = 0;
+        int InternationalLicenseID;
         public AddNewInternationalLicenseForm()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace Driving_Vehicle_License_Department__DVLD_
         {
             btnIssue.Enabled = false;
             linkLabelShowLicenseInfo.Enabled = false;
+            linkLabelShowLicenseHistory.Enabled = false;
         }
 
         private void BtnSearchLicense_Click(object sender, EventArgs e)
@@ -36,11 +38,11 @@ namespace Driving_Vehicle_License_Department__DVLD_
                     ctrlDriverLicseneInfo1.ShowData(licenseInfoDTO);
                     
                     LoadApplicationInfo(LicenseID);
-                    if (licenseInfoDTO.IsActive == "Yes" && licenseInfoDTO.ExpirationDate >= DateTime.Today)
-                        btnIssue.Enabled = true;
+                    linkLabelShowLicenseHistory.Enabled = true;
+                    btnIssue.Enabled = true;
                 }
                 else
-                    MessageBox.Show("License with license id = " + LicenseID.ToString() + " is not exsist", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("License with license id = " + LicenseID.ToString() + " is not exsist", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("Enter Valid Numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -94,11 +96,19 @@ namespace Driving_Vehicle_License_Department__DVLD_
                 InternationalLicense.PersonID = clsInternationalLicense.GetPersonIDFromDriverID(InternationalLicense.DriverID);
                 InternationalLicense.PaidFees = PaidFees;
 
-                if (InternationalLicense.IssueInternationalLicense())
+                if (InternationalLicense.Issue())
                 {
-                    MessageBox.Show("International License Issued Successfully with License Id = " + InternationalLicense.InternationalLicenseID, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    lblInternationalLicenseID.Text = InternationalLicense.InternationalLicenseID.ToString();
-                    linkLabelShowLicenseInfo.Enabled = true;
+                    if (licenseInfoDTO.IsActive == "Yes" && licenseInfoDTO.ExpirationDate >= DateTime.Today)
+                    {
+                        InternationalLicenseID = InternationalLicense.InternationalLicenseID;
+                        MessageBox.Show("International License Issued Successfully with License Id = " + InternationalLicenseID, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        lblInternationalLicenseID.Text = InternationalLicenseID.ToString();
+                        lblApplicationID.Text = InternationalLicense.ApplicationID.ToString();
+                        linkLabelShowLicenseInfo.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("License is not active or ExpirationDate End", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
 
                 else
@@ -114,7 +124,8 @@ namespace Driving_Vehicle_License_Department__DVLD_
 
         private void LinkLabelShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Form ShowLicenseInfo = new ShowInternationalDriverInfoForm(InternationalLicenseID);
+            ShowLicenseInfo.Show();
         }
     }
 }

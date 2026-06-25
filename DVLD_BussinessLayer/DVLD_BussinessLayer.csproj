@@ -49,6 +49,7 @@
     <Compile Include="clsListDrivers.cs" />
     <Compile Include="clsLocalDrivingLicenseApplication.cs" />
     <Compile Include="clsManageApplicationsTypes.cs" />
+    <Compile Include="clsManageInternationalLicenseApp.cs" />
     <Compile Include="clsManagePeople.cs" />
     <Compile Include="clsManageTestTypes.cs" />
     <Compile Include="clsManageUsers.cs" />
